@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+import { getEntry } from 'astro:content';
+
+const campussen = (await getCollection('campussen')).sort((a, b) => a.data.volgorde - b.data.volgorde);
+const artsen    = await getCollection('artsen');
+
+// Group artsen per campus
+const artsenPerCampus = (campusSlug: string) =>
+  artsen.filter(a => a.data.campussen.includes(campusSlug))
+        .sort((a,b) => a.data.volgorde - b.data.volgorde);
+---
+
+<BaseLayout title="Campussen & Secretariaten">
+  <Nav />
+
+  <section class="section container">
+    <div class="lbl">Bereikbaarheid</div>
+    <h1>Secretariaat per campus</h1>
+    <p class="lead">Maak een afspraak via telefoon, e-mail of online via mynexuzhealth.<br>
+    Alle campussen zijn bereikbaar van maandag tot en met vrijdag.</p>
+
+    <div class="campus-grid">
+      {campussen.map(c => {
+        const artsenHier = artsenPerCampus(c.id);
+        return (
+          <div class="campus-card">
+            <div class="cc-head" style={`background:#${c.data.kleur}`}>
+              <div>
+                <strong>{c.data.naam}</strong>
+                <span>{c.data.gemeente}</span>
+              </div>
+            </div>
+            <div class="cc-body">
+              <div class="cc-row">
+                <span class="cc-ico">📞</span>
+                <div>
+                  <a href={`tel:${c.data.telefoon.replace(/\s/g,'')}`}>{c.data.telefoon}</a>
+                  <p>{c.data.uren}</p>
+                </div>
+              </div>
+              {c.data.email && (
+                <div class="cc-row">
+                  <span class="cc-ico">✉️</span>
+                  <div><a href={`mailto:${c.data.email}`}>{c.data.email}</a></div>
+                </div>
+              )}
+              <div class="cc-row">
+                <span class="cc-ico">📍</span>
+                <div>
+                  <p>{c.data.adres}, {c.data.postcode} {c.data.gemeente}</p>
+                  <a href={`https://maps.google.com/?q=${encodeURIComponent(c.data.adres+' '+c.data.gemeente)}`}
+                     target="_blank" style="font-size:12px;color:var(--red)">Route plannen →</a>
+                </div>
+              </div>
+              {artsenHier.length > 0 && (
+                <div class="cc-artsen">
+                  <span>Longartsen op deze campus</span>
+                  <div class="arts-chips">
+                    {artsenHier.map(a => (
+                      <a href={`/artsen/${a.id}`} class="arts-chip">{a.data.naam}</a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+
+  <div class="cta-band container" style="margin-bottom:64px">
+    <div>
+      <h2>Online afspraak maken</h2>
+      <p>Direct een afspraak inplannen via mynexuzhealth — 24/7 beschikbaar.</p>
+    </div>
+    <a href="https://mynexuz.be/afspraken/maak-afspraak?ziekenhuisCode=OLVA&medischeDienst=3012"
+       class="btn btn-red" target="_blank">📅 Online afspraak →</a>
+  </div>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+h1 { font-size:clamp(28px,3.5vw,42px); margin-bottom:12px; }
+.lead { font-size:16px; color:var(--muted); line-height:1.7; margin-bottom:48px; }
+.campus-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:48px; }
+.campus-card { background:var(--white); border:1px solid var(--border); border-radius:8px; overflow:hidden; transition:all .25s; }
+.campus-card:hover { border-color:rgba(200,16,46,.3); box-shadow:0 4px 20px rgba(200,16,46,.08); transform:translateY(-2px); }
+.cc-head { color:#fff; padding:16px 20px; }
+.cc-head strong { display:block; font-size:15px; font-weight:700; }
+.cc-head span { font-size:11.5px; opacity:.8; }
+.cc-body { padding:18px 20px; }
+.cc-row { display:flex; gap:10px; margin-bottom:12px; align-items:flex-start; }
+.cc-row:last-child { margin-bottom:0; }
+.cc-ico { font-size:14px; margin-top:2px; flex-shrink:0; width:20px; text-align:center; }
+.cc-row a { color:var(--red); text-decoration:none; font-size:13.5px; font-weight:600; }
+.cc-row a:hover { text-decoration:underline; }
+.cc-row p { font-size:12.5px; color:var(--muted); line-height:1.4; }
+.cc-artsen { margin-top:14px; padding-top:14px; border-top:1px solid var(--border); }
+.cc-artsen span { font-size:11px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:8px; }
+.arts-chips { display:flex; flex-wrap:wrap; gap:5px; }
+.arts-chip { background:var(--gray1); border:1px solid var(--border); color:var(--text); font-size:11.5px; padding:3px 9px; border-radius:3px; font-weight:500; text-decoration:none; transition:all .15s; }
+.arts-chip:hover { background:var(--red-l); color:var(--red); border-color:rgba(200,16,46,.2); }
+.cta-band { background:var(--red); border-radius:10px; padding:36px 40px; display:flex; align-items:center; justify-content:space-between; gap:32px; }
+.cta-band h2 { font-size:24px; color:#fff; margin-bottom:6px; }
+.cta-band p { color:rgba(255,255,255,.8); font-size:15px; }
+.cta-band .btn { background:#fff; color:var(--red); border-color:#fff; flex-shrink:0; }
+.cta-band .btn:hover { background:var(--red-l); }
+@media(max-width:960px) {
+  .campus-grid { grid-template-columns:1fr 1fr; }
+  .cta-band { flex-direction:column; padding:28px 24px; }
+}
+@media(max-width:600px) {
+  .campus-grid { grid-template-columns:1fr; }
+}
+</style>

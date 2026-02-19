@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const artsen = await getCollection('artsen');
+  return artsen.map(a => ({ params: { slug: a.id }, props: { arts: a } }));
+}
+
+const { arts } = Astro.props;
+const { naam, titel, specialisatie, campussen: campusSlugs, foto, bio, geconventioneerd } = arts.data;
+
+const allCampussen = await getCollection('campussen');
+const mijnCampussen = allCampussen
+  .filter(c => campusSlugs.includes(c.id))
+  .sort((a, b) => a.data.volgorde - b.data.volgorde);
+---
+
+<BaseLayout title={naam}>
+  <Nav />
+
+  <div class="container arts-detail section">
+    <a href="/artsen" class="back">← Terug naar alle artsen</a>
+
+    <div class="detail-grid">
+      <!-- Left: foto + contact -->
+      <aside>
+        <div class="arts-foto">
+          {foto
+            ? <img src={foto} alt={naam} />
+            : <span>👨‍⚕️</span>}
+        </div>
+        <div class="arts-meta">
+          <h1>{naam}</h1>
+          <p class="arts-titel">{titel}</p>
+          <span class="sp-badge">{specialisatie}</span>
+          {geconventioneerd && <p class="conv">✓ Geconventioneerd</p>}
+        </div>
+
+        <div class="campus-list">
+          <h3>Consulteert op</h3>
+          {mijnCampussen.map(c => (
+            <a href={`/campussen`} class="campus-row" style={`border-left-color:#${c.data.kleur}`}>
+              <strong>{c.data.naam}</strong>
+              <span>{c.data.gemeente}</span>
+              <a href={`tel:${c.data.telefoon.replace(/\s/g,'')}`} class="tel">{c.data.telefoon}</a>
+            </a>
+          ))}
+        </div>
+
+        <a href="https://mynexuz.be/afspraken/maak-afspraak?ziekenhuisCode=OLVA&medischeDienst=3012"
+           class="btn btn-red" target="_blank" style="width:100%;justify-content:center;margin-top:20px">
+          📅 Afspraak maken
+        </a>
+      </aside>
+
+      <!-- Right: bio -->
+      <main>
+        {bio
+          ? <div class="prose"><p>{bio}</p></div>
+          : <div class="no-bio">
+              <p>Meer informatie over {naam} vindt u binnenkort op deze pagina.<br/>
+              Voor een afspraak of vragen, neem contact op met het secretariaat.</p>
+            </div>
+        }
+      </main>
+    </div>
+  </div>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+.back { display:inline-flex; align-items:center; gap:6px; color:var(--red); text-decoration:none; font-size:13.5px; font-weight:600; margin-bottom:32px; }
+.back:hover { text-decoration:underline; }
+.detail-grid { display:grid; grid-template-columns:300px 1fr; gap:56px; }
+aside { }
+.arts-foto {
+  width:100%; aspect-ratio:1; border-radius:8px;
+  overflow:hidden; background:var(--red-l);
+  display:flex; align-items:center; justify-content:center; font-size:80px;
+  margin-bottom:20px;
+}
+.arts-foto img { width:100%; height:100%; object-fit:cover; object-position:top; }
+h1 { font-size:22px; margin-bottom:4px; }
+.arts-titel { font-size:14px; color:var(--muted); font-style:italic; margin-bottom:10px; }
+.sp-badge { display:inline-block; background:var(--red-l); color:var(--red); font-size:12px; font-weight:700; padding:4px 12px; border-radius:20px; margin-bottom:10px; }
+.conv { font-size:12.5px; color:#2D9B8A; font-weight:600; margin-top:6px; }
+.campus-list { margin-top:24px; }
+.campus-list h3 { font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; font-family:var(--font-sans); }
+.campus-row {
+  display:block; padding:10px 14px; border-left:3px solid var(--red);
+  background:var(--gray1); border-radius:0 4px 4px 0; margin-bottom:8px;
+  text-decoration:none; transition:background .2s;
+}
+.campus-row:hover { background:var(--red-l); }
+.campus-row strong { display:block; font-size:13px; color:var(--text); }
+.campus-row span { font-size:11.5px; color:var(--muted); }
+.campus-row .tel { display:block; font-size:13px; color:var(--red); font-weight:700; margin-top:3px; }
+.prose { font-size:16px; line-height:1.75; color:var(--text); }
+.no-bio { background:var(--gray1); border-radius:8px; padding:32px; color:var(--muted); font-size:15px; line-height:1.7; }
+@media(max-width:800px) { .detail-grid { grid-template-columns:1fr; } }
+</style>

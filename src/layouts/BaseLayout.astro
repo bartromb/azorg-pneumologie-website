@@ -1,0 +1,40 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Pneumologie / Longziekten',
+  description = 'De dienst Pneumologie van AZOrg onderzoekt en behandelt alle aandoeningen van de longen en de luchtwegen.',
+} = Astro.props;
+
+const pageTitle = title === 'Pneumologie / Longziekten'
+  ? 'Pneumologie / Longziekten — AZOrg Ziekenhuis'
+  : `${title} — Pneumologie AZOrg`;
+---
+
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{pageTitle}</title>
+  <!-- Favicon via AZOrg -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body>
+  <slot />
+  <script>
+    // Scroll reveal
+    const obs = new IntersectionObserver(
+      es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); }),
+      { threshold: 0.07 }
+    );
+    document.querySelectorAll('.rev').forEach(r => obs.observe(r));
+  </script>
+</body>
+</html>

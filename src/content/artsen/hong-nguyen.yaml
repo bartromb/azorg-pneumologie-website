@@ -1,0 +1,9 @@
+naam: "Dr. Hong Nguyen"
+titel: "Longarts"
+specialisatie: "Slaapkliniek & Sportgeneeskunde"
+geconventioneerd: true
+campussen:
+  - "aalst-moorselbaan"
+  - "ninove"
+foto: "/images/artsen/hong-nguyen.jpg"
+volgorde: 9

@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const items = await getCollection('klinieken');
+  return items.map(item => ({ params: { slug: item.id }, props: { item } }));
+}
+
+const { item } = Astro.props;
+const { Content } = await render(item);
+const { titel, kleur, icoon, excerpt } = item.data;
+---
+
+<BaseLayout title={titel} description={excerpt}>
+  <Nav />
+  <div style={`height:5px;background:#${kleur}`}></div>
+  <div class="container page-layout section">
+    <a href="/klinieken" class="back">← Alle klinieken</a>
+    <header class="page-header">
+      <span class="icoon">{icoon}</span>
+      <div>
+        <div class="lbl" style={`color:#${kleur}`}>Expertkliniek</div>
+        <h1>{titel}</h1>
+        <p class="excerpt">{excerpt}</p>
+      </div>
+    </header>
+    <div class="prose"><Content /></div>
+    <div class="cta-card">
+      <h2>Afspraak maken</h2>
+      <p>Via het secretariaat van uw campus of direct online.</p>
+      <div style="display:flex;gap:12px;margin-top:16px">
+        <a href="/campussen" class="btn btn-ghost">📍 Secretariaten</a>
+        <a href="https://mynexuz.be/afspraken/maak-afspraak?ziekenhuisCode=OLVA&medischeDienst=3012"
+           class="btn btn-red" target="_blank">📅 Online afspraak</a>
+      </div>
+    </div>
+  </div>
+  <Footer />
+</BaseLayout>
+
+<style>
+.back { display:inline-flex; gap:6px; color:var(--red); text-decoration:none; font-size:13.5px; font-weight:600; margin-bottom:32px; }
+.page-header { display:flex; align-items:flex-start; gap:22px; margin-bottom:40px; }
+.icoon { font-size:48px; flex-shrink:0; margin-top:4px; }
+h1 { font-size:clamp(26px,3.5vw,40px); margin-bottom:8px; }
+.excerpt { font-size:16.5px; color:var(--muted); line-height:1.7; font-weight:300; }
+.prose { max-width:740px; font-size:16px; line-height:1.8; }
+.prose h2 { font-size:22px; margin:36px 0 12px; }
+.prose h3 { font-size:17px; font-family:var(--font-sans); font-weight:700; margin:24px 0 8px; }
+.prose p { margin-bottom:16px; }
+.prose ul, .prose ol { padding-left:24px; margin-bottom:16px; }
+.prose li { margin-bottom:6px; }
+.prose strong { font-weight:700; }
+.prose a { color:var(--red); }
+.cta-card { background:var(--gray1); border:1px solid var(--border); border-radius:8px; padding:32px 36px; margin-top:52px; max-width:740px; }
+.cta-card h2 { font-size:20px; margin-bottom:8px; }
+.cta-card p { font-size:14.5px; color:var(--muted); }
+</style>

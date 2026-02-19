@@ -1,0 +1,9 @@
+naam: "Dr. Elke Hardeman"
+titel: "Longarts"
+specialisatie: "Interstitiële longziekten"
+geconventioneerd: true
+campussen:
+  - "aalst-moorselbaan"
+  - "asse"
+foto: "/images/artsen/elke-hardeman.jpg"
+volgorde: 6

@@ -1,0 +1,262 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const artsen     = (await getCollection('artsen')).sort((a,b) => a.data.volgorde - b.data.volgorde);
+const campussen  = (await getCollection('campussen')).sort((a,b) => a.data.volgorde - b.data.volgorde);
+const aandoeningen = (await getCollection('aandoeningen')).filter(a => a.data.gepubliceerd).sort((a,b) => a.data.volgorde - b.data.volgorde);
+const klinieken  = (await getCollection('klinieken')).filter(k => k.data.gepubliceerd).sort((a,b) => a.data.volgorde - b.data.volgorde);
+const nieuws     = (await getCollection('nieuws')).filter(n => n.data.gepubliceerd).sort((a,b) => b.data.datum.getTime() - a.data.datum.getTime()).slice(0,3);
+---
+
+<BaseLayout>
+  <Nav />
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-body container">
+      <div class="svc-badge">Dienst Pneumologie — Longziekten</div>
+      <h1>Zorg van A tot Z<br>voor uw <span class="hi">longen</span></h1>
+      <p class="hero-intro">
+        De dienst Pneumologie van AZOrg onderzoekt en behandelt alle aandoeningen
+        van de longen en de luchtwegen. Een team van {artsen.length} gespecialiseerde
+        longartsen, verspreid over {campussen.length} campussen, staat voor u klaar.
+      </p>
+      <div class="hero-btns">
+        <a href="https://mynexuz.be/afspraken/maak-afspraak?ziekenhuisCode=OLVA&medischeDienst=3012"
+           class="btn btn-red" target="_blank">📅 Online afspraak</a>
+        <a href="/campussen" class="btn btn-ghost">Secretariaten & campussen</a>
+      </div>
+      <div class="campus-pills">
+        <p>Actief op</p>
+        {campussen.map(c => <span class="campus-pill">{c.data.naam}</span>)}
+      </div>
+    </div>
+    <div class="hero-img" aria-hidden="true">
+      <svg viewBox="0 0 460 440" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+        <rect width="460" height="440" fill="#FCEEF0"/>
+        <circle cx="230" cy="180" r="130" fill="rgba(200,16,46,0.05)"/>
+        <circle cx="230" cy="180" r="85" fill="rgba(200,16,46,0.07)"/>
+        <ellipse cx="170" cy="195" rx="58" ry="90" fill="none" stroke="#C8102E" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+        <ellipse cx="290" cy="195" rx="58" ry="90" fill="none" stroke="#C8102E" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+        <path d="M230 105 L230 135" stroke="#C8102E" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+        <path d="M230 135 Q215 135 190 148" stroke="#C8102E" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <path d="M230 135 Q245 135 270 148" stroke="#C8102E" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <rect x="454" y="0" width="6" height="110" fill="#C8102E"/>
+        <rect x="454" y="110" width="6" height="110" fill="#2D9B8A"/>
+        <rect x="454" y="220" width="6" height="110" fill="#E8A000"/>
+        <rect x="454" y="330" width="6" height="110" fill="#7B4FA6"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="statsbar">
+    <div class="stbl"><strong>{artsen.length}</strong><span>Longartsen</span></div>
+    <div class="stbl"><strong>{campussen.length}</strong><span>Campussen</span></div>
+    <div class="stbl"><strong>950K</strong><span>AZOrg consultaties/jaar</span></div>
+    <div class="stbl"><strong>5.000+</strong><span>AZOrg medewerkers</span></div>
+    <div class="stbl"><strong>500+</strong><span>Arts-specialisten</span></div>
+  </div>
+
+  <!-- QUICK ACCESS -->
+  <div class="qa-bar">
+    <a class="qa-item" href={`tel:${campussen[0]?.data.telefoon.replace(/\s/g,'')}`}>
+      <div class="qa-ico">📞</div>
+      <div class="qa-txt"><strong>Secretariaat bellen</strong><span>{campussen[0]?.data.naam}: {campussen[0]?.data.telefoon}</span></div>
+    </a>
+    <a class="qa-item" href="https://mynexuz.be/afspraken/maak-afspraak?ziekenhuisCode=OLVA&medischeDienst=3012" target="_blank">
+      <div class="qa-ico">🖥️</div>
+      <div class="qa-txt"><strong>Online afspraak</strong><span>via mynexuzhealth</span></div>
+    </a>
+    <a class="qa-item" href="/aandoeningen">
+      <div class="qa-ico">🫁</div>
+      <div class="qa-txt"><strong>Aandoeningen</strong><span>Overzicht longziekten</span></div>
+    </a>
+    <a class="qa-item" href="https://mynexuz.be" target="_blank">
+      <div class="qa-ico">📁</div>
+      <div class="qa-txt"><strong>Mijn dossier</strong><span>mynexuzhealth portaal</span></div>
+    </a>
+  </div>
+
+  <!-- AANDOENINGEN -->
+  <section class="section section-gray" id="aandoeningen">
+    <div class="container">
+      <div class="lbl">Longaandoeningen</div>
+      <h2>Aandoeningen die wij behandelen</h2>
+      <div class="cond-grid rev">
+        {aandoeningen.map(a => (
+          <a href={`/aandoeningen/${a.id}`} class="cond">
+            <div class="cond-bar" style={`background:#${a.data.kleur}`}></div>
+            <div class="cond-ico">{a.data.icoon}</div>
+            <h3>{a.data.titel}</h3>
+            <p>{a.data.excerpt}</p>
+            <span class="cond-more" style={`color:#${a.data.kleur}`}>Meer info →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTSEN (preview) -->
+  <section class="section" id="artsen">
+    <div class="container">
+      <div class="lbl">Ons team</div>
+      <h2>Gespecialiseerde longartsen</h2>
+      <p class="section-desc">Alle longartsen zijn geconventioneerd.</p>
+      <div class="artsen-grid rev">
+        {artsen.slice(0,8).map(a => (
+          <a href={`/artsen/${a.id}`} class="arts-card">
+            <div class="arts-body">
+              {a.data.foto ? <img class="arts-photo-img" src={a.data.foto} alt={a.data.naam} loading="lazy" /> : <div class="arts-av">👨‍⚕️</div>}
+              <h3>{a.data.naam}</h3>
+              <p class="arts-titel">{a.data.titel}</p>
+              <span class="arts-sp">{a.data.specialisatie}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div style="text-align:center;margin-top:28px">
+        <a href="/artsen" class="btn btn-ghost">Bekijk alle {artsen.length} longartsen →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- KLINIEKEN -->
+  <section class="section section-gray" id="klinieken">
+    <div class="container">
+      <div class="lbl">Expertklinieken</div>
+      <h2>Gespecialiseerde klinieken</h2>
+      <div class="klin-grid rev">
+        {klinieken.map(k => (
+          <a href={`/klinieken/${k.id}`} class="klin">
+            <div class="klin-top" style={`background:#${k.data.kleur}`}></div>
+            <div class="klin-body">
+              <span class="klin-ico">{k.data.icoon}</span>
+              <h3>{k.data.titel}</h3>
+              <p>{k.data.excerpt}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- NIEUWS -->
+  {nieuws.length > 0 && (
+    <section class="section" id="nieuws">
+      <div class="container">
+        <div class="lbl">Actueel</div>
+        <h2>Nieuws</h2>
+        <div class="news-grid rev">
+          {nieuws.map(n => (
+            <a href={`/nieuws/${n.id}`} class="news-card">
+              <div class="news-img">{n.data.afbeelding ? <img src={n.data.afbeelding} alt={n.data.titel}/> : '📰'}</div>
+              <div class="news-body">
+                <span class="news-tag">{n.data.tag}</span>
+                <h3>{n.data.titel}</h3>
+                <p>{n.data.excerpt}</p>
+                <span class="news-date">{n.data.datum.toLocaleDateString('nl-BE', {day:'numeric',month:'long',year:'numeric'})}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <Footer />
+</BaseLayout>
+
+<style>
+/* Hero */
+.hero { display:grid; grid-template-columns:1fr 460px; min-height:440px; }
+.hero-body { padding:60px 0; display:flex; flex-direction:column; justify-content:center; }
+.svc-badge { display:inline-flex; align-items:center; gap:7px; background:var(--red-l); color:var(--red); font-size:11px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; padding:5px 13px; border-radius:3px; margin-bottom:16px; width:fit-content; }
+.svc-badge::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--red); }
+h1 { font-size:clamp(32px,3.8vw,50px); color:var(--text); margin-bottom:16px; }
+h1 .hi { color:var(--red); }
+.hero-intro { font-size:16.5px; color:var(--muted); line-height:1.72; max-width:500px; margin-bottom:28px; font-weight:300; }
+.hero-btns { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:32px; }
+.campus-pills { display:flex; flex-wrap:wrap; gap:7px; }
+.campus-pills p { font-size:11.5px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; width:100%; margin-bottom:4px; }
+.campus-pill { display:inline-flex; align-items:center; gap:5px; background:var(--gray1); border:1px solid var(--border); color:var(--muted); font-size:12px; font-weight:600; padding:4px 11px; border-radius:20px; }
+.campus-pill::before { content:'📍'; font-size:10px; }
+.hero-img { overflow:hidden; background:var(--red-l); }
+
+/* Stats */
+.statsbar { background:#0F0F1A; display:grid; grid-template-columns:repeat(5,1fr); }
+.stbl { padding:18px 20px; border-right:1px solid rgba(255,255,255,.06); text-align:center; }
+.stbl:last-child { border-right:none; }
+.stbl strong { display:block; font-family:var(--font-serif); font-size:30px; color:var(--red); line-height:1; margin-bottom:3px; }
+.stbl span { font-size:11px; color:rgba(255,255,255,.45); text-transform:uppercase; letter-spacing:.05em; }
+
+/* Quick access */
+.qa-bar { display:grid; grid-template-columns:repeat(4,1fr); border-bottom:1px solid var(--border); }
+.qa-item { display:flex; align-items:center; gap:13px; padding:18px 22px; text-decoration:none; color:var(--text); border-right:1px solid var(--border); transition:all .2s; }
+.qa-item:last-child { border-right:none; }
+.qa-item:hover { background:var(--red-l); }
+.qa-ico { width:38px; height:38px; border-radius:50%; background:var(--red); color:#fff; display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
+.qa-txt strong { display:block; font-size:13px; font-weight:700; }
+.qa-txt span { font-size:11.5px; color:var(--muted); }
+
+/* Section headings */
+h2 { font-size:clamp(26px,3vw,38px); margin-bottom:13px; }
+.section-desc { font-size:16px; color:var(--muted); line-height:1.7; margin-bottom:40px; }
+
+/* Aandoeningen */
+.cond-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:6px; overflow:hidden; }
+.cond { background:var(--white); padding:26px 20px; transition:background .2s; text-decoration:none; display:block; }
+.cond:hover { background:var(--red-l); }
+.cond-bar { height:3px; width:32px; border-radius:2px; margin-bottom:12px; }
+.cond-ico { font-size:22px; margin-bottom:8px; display:block; }
+.cond h3 { font-size:14.5px; font-weight:700; color:var(--text); margin-bottom:7px; font-family:var(--font-sans); }
+.cond p { font-size:13px; color:var(--muted); line-height:1.6; }
+.cond-more { display:inline-flex; align-items:center; gap:5px; font-size:12.5px; font-weight:700; margin-top:12px; }
+
+/* Artsen */
+.artsen-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.arts-card { background:var(--white); border:1px solid var(--border); border-radius:8px; overflow:hidden; text-decoration:none; transition:all .25s; display:block; }
+.arts-card:hover { border-color:var(--red); box-shadow:0 6px 24px rgba(200,16,46,.1); transform:translateY(-3px); }
+.arts-body { padding:20px 16px; text-align:center; }
+.arts-av { width:68px; height:68px; border-radius:50%; background:var(--red-l); border:2px solid rgba(200,16,46,.15); margin:0 auto 12px; display:flex; align-items:center; justify-content:center; font-size:26px; }
+.arts-card h3 { font-size:13.5px; font-weight:700; color:var(--text); margin-bottom:4px; line-height:1.3; font-family:var(--font-sans); }
+.arts-titel { font-size:11.5px; color:var(--muted); margin-bottom:8px; font-style:italic; display:block; }
+.arts-sp { display:inline-block; font-size:10.5px; font-weight:700; padding:3px 9px; border-radius:20px; background:var(--red-l); color:var(--red); }
+
+/* Klinieken */
+.klin-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.klin { background:var(--white); border:1px solid var(--border); border-radius:8px; overflow:hidden; text-decoration:none; transition:all .25s; display:block; }
+.klin:hover { box-shadow:0 6px 24px rgba(0,0,0,.09); transform:translateY(-2px); }
+.klin-top { height:6px; }
+.klin-body { padding:24px 22px; }
+.klin-ico { font-size:28px; margin-bottom:12px; display:block; }
+.klin-body h3 { font-size:17px; color:var(--text); margin-bottom:8px; }
+.klin-body p { font-size:13px; color:var(--muted); line-height:1.65; }
+
+/* Nieuws */
+.news-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.news-card { background:var(--white); border:1px solid var(--border); border-radius:8px; overflow:hidden; text-decoration:none; transition:all .25s; display:block; }
+.news-card:hover { box-shadow:0 6px 24px rgba(0,0,0,.1); transform:translateY(-2px); }
+.news-img { height:160px; background:var(--gray2); display:flex; align-items:center; justify-content:center; font-size:48px; overflow:hidden; }
+.news-img img { width:100%; height:100%; object-fit:cover; }
+.news-body { padding:20px; }
+.news-tag { font-size:10.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--red); margin-bottom:8px; display:block; }
+.news-body h3 { font-size:16px; color:var(--text); line-height:1.35; margin-bottom:10px; }
+.news-body p { font-size:13px; color:var(--muted); line-height:1.6; }
+.news-date { font-size:11.5px; color:var(--muted); margin-top:12px; display:block; }
+
+@media(max-width:960px) {
+  .hero { grid-template-columns:1fr; }
+  .hero-img { display:none; }
+  .hero-body { padding:44px 0; }
+  .statsbar { grid-template-columns:repeat(3,1fr); }
+  .qa-bar { grid-template-columns:repeat(2,1fr); }
+  .cond-grid, .artsen-grid, .klin-grid, .news-grid { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:600px) {
+  .cond-grid, .artsen-grid, .klin-grid, .news-grid { grid-template-columns:1fr; }
+}
+</style>

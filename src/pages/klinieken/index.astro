@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const items = (await getCollection('klinieken'))
+  .filter(k => k.data.gepubliceerd)
+  .sort((a, b) => a.data.volgorde - b.data.volgorde);
+---
+
+<BaseLayout title="Expertklinieken">
+  <Nav />
+  <section class="section container">
+    <div class="lbl">Specialisaties</div>
+    <h1>Onze expertklinieken</h1>
+    <p class="lead">Gespecialiseerde klinieken voor gerichte diagnose en behandeling.</p>
+    <div class="grid">
+      {items.map(k => (
+        <a href={`/klinieken/${k.id}`} class="card">
+          <div class="card-top" style={`background:#${k.data.kleur}`}></div>
+          <div class="card-body">
+            <span class="ico">{k.data.icoon}</span>
+            <h2>{k.data.titel}</h2>
+            <p>{k.data.excerpt}</p>
+            <span class="more" style={`color:#${k.data.kleur}`}>Meer info →</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+  <Footer />
+</BaseLayout>
+
+<style>
+h1 { font-size:clamp(28px,3.5vw,42px); margin-bottom:12px; }
+.lead { font-size:16px; color:var(--muted); margin-bottom:48px; }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.card { background:var(--white); border:1px solid var(--border); border-radius:8px; overflow:hidden; text-decoration:none; transition:all .25s; display:block; }
+.card:hover { box-shadow:0 6px 24px rgba(0,0,0,.09); transform:translateY(-2px); }
+.card-top { height:6px; }
+.card-body { padding:24px 22px; }
+.ico { font-size:28px; margin-bottom:12px; display:block; }
+.card h2 { font-size:17px; color:var(--text); margin-bottom:8px; font-family:var(--font-sans); font-weight:700; }
+.card p { font-size:13.5px; color:var(--muted); line-height:1.65; }
+.more { display:inline-flex; gap:5px; font-size:13px; font-weight:700; margin-top:14px; }
+@media(max-width:900px) { .grid { grid-template-columns:repeat(2,1fr); } }
+@media(max-width:500px) { .grid { grid-template-columns:1fr; } }
+</style>

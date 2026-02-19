@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const artsen = (await getCollection('artsen')).sort((a, b) => a.data.volgorde - b.data.volgorde);
+const campussen = await getCollection('campussen');
+
+const campusNaam = (slug: string) =>
+  campussen.find(c => c.id === slug)?.data.naam ?? slug;
+---
+
+<BaseLayout title="Onze longartsen">
+  <Nav />
+
+  <section class="section container">
+    <div class="lbl">Medisch team</div>
+    <h1>Onze {artsen.length} longartsen</h1>
+    <p class="lead">Alle longartsen zijn geconventioneerd en verbonden aan één of meerdere AZOrg-campussen.</p>
+
+    <div class="artsen-grid">
+      {artsen.map(a => (
+        <a href={`/artsen/${a.id}`} class="arts-card">
+          <div class="arts-top" style="height:5px;background:var(--red)"></div>
+          <div class="arts-av">
+            {a.data.foto
+              ? <img src={a.data.foto} alt={a.data.naam} loading="lazy" />
+              : <span>👨‍⚕️</span>}
+          </div>
+          <div class="arts-body">
+            <h2>{a.data.naam}</h2>
+            <p class="arts-titel">{a.data.titel}</p>
+            <span class="arts-sp">{a.data.specialisatie}</span>
+            {a.data.geconventioneerd && <span class="conv-badge">✓ Geconventioneerd</span>}
+            <div class="arts-campussen">
+              {a.data.campussen.map(c => (
+                <span class="chip">{campusNaam(c)}</span>
+              ))}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+h1 { font-size: clamp(28px, 3.5vw, 42px); margin-bottom: 12px; }
+.lead { font-size: 16px; color: var(--muted); margin-bottom: 48px; }
+.artsen-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.arts-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: all .25s;
+}
+.arts-card:hover {
+  border-color: var(--red);
+  box-shadow: 0 6px 24px rgba(200,16,46,.1);
+  transform: translateY(-3px);
+}
+.arts-av {
+  height: 200px;
+  background: var(--red-l);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  overflow: hidden;
+}
+.arts-av img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.arts-body { padding: 18px 16px; flex: 1; }
+.arts-body h2 { font-size: 14px; color: var(--text); margin-bottom: 3px; font-family: var(--font-sans); font-weight: 700; line-height: 1.3; }
+.arts-titel { font-size: 12px; color: var(--muted); font-style: italic; margin-bottom: 9px; display: block; }
+.arts-sp {
+  display: inline-block;
+  background: var(--red-l);
+  color: var(--red);
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 20px;
+  margin-bottom: 6px;
+}
+.conv-badge {
+  display: block;
+  font-size: 10.5px;
+  color: var(--teal, #2D9B8A);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.arts-campussen { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+.chip {
+  font-size: 10.5px;
+  background: var(--gray1);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: 3px;
+  color: var(--muted);
+}
+@media(max-width:960px) { .artsen-grid { grid-template-columns: repeat(2, 1fr); } }
+@media(max-width:500px) { .artsen-grid { grid-template-columns: 1fr; } }
+</style>

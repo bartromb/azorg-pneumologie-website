@@ -1,0 +1,119 @@
+---
+// Footer.astro
+---
+
+<style>
+.foot-stripe {
+  height: 5px;
+  background: linear-gradient(to right,
+    #C8102E 20%, #2D9B8A 20%, #2D9B8A 40%,
+    #E8A000 40%, #E8A000 60%,
+    #6AAF2E 60%, #6AAF2E 80%,
+    #7B4FA6 80%);
+}
+footer {
+  background: #0F0F1A; color: rgba(255,255,255,.5);
+  padding: 52px 48px 28px;
+}
+.foot-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 44px; margin-bottom: 40px;
+}
+.foot-col h4 {
+  color: #fff; font-size: 11.5px; font-weight: 700;
+  letter-spacing: .09em; text-transform: uppercase;
+  margin-bottom: 16px; font-family: var(--font-sans);
+}
+.foot-col a {
+  display: block; color: rgba(255,255,255,.45);
+  font-size: 13px; text-decoration: none; margin-bottom: 8px;
+  transition: color .2s;
+}
+.foot-col a:hover { color: #fff; }
+.foot-bottom {
+  border-top: 1px solid rgba(255,255,255,.07);
+  padding-top: 22px;
+  display: flex; justify-content: space-between;
+  align-items: center; font-size: 12px; flex-wrap: wrap; gap: 10px;
+}
+.foot-bottom a { color: rgba(255,255,255,.4); text-decoration: none; margin-left: 14px; }
+.foot-bottom a:hover { color: #fff; }
+.foot-social { display: flex; gap: 10px; margin-top: 14px; }
+.foot-social a {
+  width: 34px; height: 34px; border-radius: 6px;
+  background: rgba(255,255,255,.07);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; text-decoration: none; transition: background .2s;
+  color: white;
+}
+.foot-social a:hover { background: var(--red); }
+.foot-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.foot-logo-pill {
+  background: var(--red); border-radius: 5px;
+  padding: 4px 7px; display: flex; align-items: center;
+}
+.foot-logo-pill svg { height: 28px; width: auto; }
+@media(max-width:960px) {
+  footer { padding: 40px 20px 22px; }
+  .foot-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+</style>
+
+<div class="foot-stripe"></div>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-logo">
+        <a href="https://www.azorg.be" class="foot-logo-pill">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+            <g><path fill="white" d="M26.3612,26.5322c0,1.5826,1.2,2.7537,2.8344,2.7537c0.7434,0,1.4495-0.2329,1.9367-0.6986v-2.0331H30.752v1.8699c-0.4412,0.3569-0.9691,0.4964-1.5411,0.4964c-1.4105,0-2.456-1.0318-2.456-2.3899s1.0455-2.39,2.456-2.39c0.6585,0,1.2236,0.1783,1.6955,0.6442l0.2479-0.2635c-0.4804-0.4964-1.1694-0.7447-1.9519-0.7447c-1.643,0-2.8429,1.1713-2.8429,2.7539 M21.349,24.1728h1.5497c1.1626,0,1.7821,0.5354,1.7821,1.4738s-0.6195,1.4738-1.7821,1.4738H21.349V24.1728z M22.8987,23.8159h-1.9452v5.431h0.3955v-1.7763h1.5497c0.185,0,0.3565-0.0154,0.5261-0.0392l1.2934,1.8155h0.4497l-1.3561-1.9004c0.8063-0.2398,1.2695-0.8381,1.2695-1.6982c0-1.1491-0.8213-1.8307-2.1844-1.8307 M14.0065,26.5322c0-1.3735,1.0387-2.3899,2.4254-2.3899c1.3867,0,2.417,1.0164,2.417,2.3899s-1.0387,2.39-2.417,2.39C15.0537,28.9221,14.0065,27.9057,14.0065,26.5322z M13.611,26.5322c0,1.5741,1.2,2.7537,2.8192,2.7537c1.6192,0,2.8192-1.1711,2.8192-2.7537c0-1.5826-1.2085-2.7537-2.8192-2.7537C14.8195,23.7785,13.611,24.9581,13.611,26.5322z M12.3669,24.1728L8.6261,28.968v0.2788h4.3688v-0.3571H9.176l3.7341-4.7951v-0.2788H8.6736v0.3569h3.695H12.3669z M3.2083,27.1305l1.032-2.0773l1.032,2.0773H3.2083z M3.5426,23.8192l-2.697,5.4293H2.156l0.5754-1.1593h3.0178l0.5754,1.1593h1.3103l-2.697-5.4293H3.5426z M26.782,4.8644h1.212l-4.4758,9.0074l-2.5579-5.1471c2.1369-0.5916,4.0327-1.8562,5.8216-3.862 M10.4201,10.0047L7.8657,4.8644h1.2119c0.8707,0.974,1.7652,1.7729,2.7004,2.407l0.168-0.34l0.3157,0.2074c1.7143,1.0879,3.5694,1.6063,5.6673,1.6063c0.8673,0,1.6939-0.0901,2.4866-0.272l0.3785-0.0816l0.1663,0.3332l0.0034,0.0085l-0.3751,0.0867c-0.1035,0.0255-0.2088,0.0476-0.314,0.0697c0.1052-0.0221,0.2088-0.0442,0.3123-0.0697c-0.8453,0.2006-1.7279,0.3009-2.658,0.3009c-2.1369,0-4.0294-0.5202-5.7759-1.6063c-0.0204-0.0119-0.039-0.0238-0.0594-0.0357l-0.3174-0.204l-1.3527,2.7231l3.0976,6.2486c0.7926-0.1819,1.6175-0.272,2.4866-0.272c2.0962,0,3.953,0.5202,5.6673,1.6063l0.0033-0.0051v0.0051l1.8417-3.7056l0.2088,0.4199l-1.7364,3.4949l-0.3158-0.2074l-1.0217,2.0568c-0.1001,0.2006-0.2122,0.4029-0.3276,0.5847l-0.0051,0.0085c-0.4854,0.8652-1.402,1.4024-2.3915,1.4024c-0.9895,0-1.901-0.5337-2.3847-1.3905l-0.0051-0.0085c-0.1188-0.1904-0.2325-0.391-0.3344-0.5966l-1.6854-3.3912L13.1477,16.34l-2.938-5.912l-4.8729,9.8046h1.9841l0.112-0.1258c1.7567-1.9684,3.617-3.2008,5.7148-3.7668l1.7227,3.466c0.1069,0.2159,0.2241,0.425,0.3496,0.6255c0.5499,0.974,1.587,1.5774,2.7089,1.5774c1.1219,0,2.1624-0.6085,2.7157-1.5893c0.1222-0.1938,0.2376-0.3995,0.3428-0.6136l1.0015-2.0143c0.896,0.6102,1.7549,1.3803,2.5917,2.3151l0.1119,0.1258h1.9843l-2.9501-5.9375L28.6,4.4904h-1.9843l-0.1119,0.1258c-1.7568,1.9684-3.6171,3.2008-5.7149,3.7668l-1.7228-3.4659c-0.1052-0.2142-0.2223-0.4199-0.3428-0.6136c-0.5533-0.9808-1.5921-1.5893-2.7157-1.5893c-1.1236,0-2.159,0.6051-2.7089,1.5774c-0.1256,0.2006-0.2427,0.4097-0.3496,0.6255l-1.0014,2.016c-0.8962-0.6102-1.755-1.3803-2.5901-2.3152l-0.112-0.1258H7.2614l2.9499,5.9375l0.2088-0.4216V10.0047z"/></g>
+          </svg>
+        </a>
+        <span style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3)">Zorg van A tot Z</span>
+      </div>
+      <p style="font-size:13px;line-height:1.7;max-width:260px">
+        Dienst Pneumologie maakt deel uit van AZOrg,
+        het op twee na grootste ziekenhuis van Vlaanderen
+        met meer dan 5.000 medewerkers op 6 campussen.
+      </p>
+      <div class="foot-social">
+        <a href="https://www.instagram.com/azorg_ziekenhuizen/" target="_blank">📷</a>
+        <a href="https://www.facebook.com/AZORGziekenhuizen" target="_blank">📘</a>
+        <a href="https://www.linkedin.com/company/azorg" target="_blank">💼</a>
+        <a href="https://www.youtube.com/@azorg-yl2wi" target="_blank">▶️</a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h4>Aandoeningen</h4>
+      <a href="/aandoeningen/astma">Astma</a>
+      <a href="/aandoeningen/copd">COPD</a>
+      <a href="/aandoeningen/longkanker">Longkanker</a>
+      <a href="/aandoeningen/slaapapneu">Slaapapneu</a>
+      <a href="/aandoeningen">Alle aandoeningen →</a>
+    </div>
+    <div class="foot-col">
+      <h4>Klinieken</h4>
+      <a href="/klinieken/slaapkliniek">Slaapkliniek</a>
+      <a href="https://www.azorg.be/nl/rookstopkliniek" target="_blank">Rookstopkliniek</a>
+      <a href="https://www.azorg.be/nl/sportmedisch-centrum" target="_blank">Sportmedisch centrum</a>
+      <a href="https://www.azorg.be/nl/allergiekliniek" target="_blank">Allergiekliniek</a>
+    </div>
+    <div class="foot-col">
+      <h4>AZOrg</h4>
+      <a href="https://www.azorg.be" target="_blank">azorg.be</a>
+      <a href="https://www.azorg.be/nl/onze-artsen" target="_blank">Alle artsen</a>
+      <a href="https://www.azorg.be/nl/professional/huisartsen" target="_blank">Voor huisartsen</a>
+      <a href="https://mynexuz.be" target="_blank">mynexuzhealth</a>
+      <a href="mailto:info@azorg.be">info@azorg.be</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© {new Date().getFullYear()} Dienst Pneumologie — AZOrg Ziekenhuis</span>
+    <div>
+      <a href="https://www.azorg.be/nl/patient/privacybeleid" target="_blank">Privacybeleid</a>
+      <a href="https://www.azorg.be/nl/cookiebeleid" target="_blank">Cookiebeleid</a>
+      <a href="https://www.azorg.be/nl/toegankelijkheidsverklaring" target="_blank">Toegankelijkheid</a>
+    </div>
+  </div>
+</footer>

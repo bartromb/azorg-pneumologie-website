@@ -1,0 +1,9 @@
+naam: "Dr. Piet Vercauter"
+titel: "Longarts"
+specialisatie: "COPD & Astma"
+geconventioneerd: true
+campussen:
+  - "aalst-moorselbaan"
+  - "asse"
+foto: "/images/artsen/piet-vercauter.jpg"
+volgorde: 14

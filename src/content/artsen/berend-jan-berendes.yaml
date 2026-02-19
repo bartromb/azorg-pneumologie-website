@@ -1,0 +1,9 @@
+naam: "Dr. Berend-Jan Berendes"
+titel: "Longarts"
+specialisatie: "Longkanker"
+geconventioneerd: true
+campussen:
+  - "aalst-moorselbaan"
+  - "asse"
+foto: "/images/artsen/berend-jan-berendes.jpg"
+volgorde: 3

@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const items = (await getCollection('nieuws'))
+  .filter(n => n.data.gepubliceerd)
+  .sort((a, b) => b.data.datum.getTime() - a.data.datum.getTime());
+---
+
+<BaseLayout title="Nieuws">
+  <Nav />
+  <section class="section container">
+    <div class="lbl">Actueel</div>
+    <h1>Nieuws & updates</h1>
+
+    <div class="grid">
+      {items.map(n => (
+        <a href={`/nieuws/${n.id}`} class="card">
+          <div class="card-img">
+            {n.data.afbeelding
+              ? <img src={n.data.afbeelding} alt={n.data.titel} loading="lazy"/>
+              : <span>📰</span>}
+          </div>
+          <div class="card-body">
+            <span class="tag">{n.data.tag}</span>
+            <h2>{n.data.titel}</h2>
+            <p>{n.data.excerpt}</p>
+            <time>{n.data.datum.toLocaleDateString('nl-BE', {day:'numeric',month:'long',year:'numeric'})}</time>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+  <Footer />
+</BaseLayout>
+
+<style>
+h1 { font-size:clamp(28px,3.5vw,42px); margin-bottom:40px; }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.card { background:var(--white); border:1px solid var(--border); border-radius:8px; overflow:hidden; text-decoration:none; transition:all .25s; display:block; }
+.card:hover { box-shadow:0 6px 24px rgba(0,0,0,.1); transform:translateY(-2px); }
+.card-img { height:170px; background:var(--gray2); display:flex; align-items:center; justify-content:center; font-size:52px; overflow:hidden; }
+.card-img img { width:100%; height:100%; object-fit:cover; }
+.card-body { padding:20px; }
+.tag { font-size:10.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--red); margin-bottom:8px; display:block; }
+.card h2 { font-size:16px; color:var(--text); line-height:1.35; margin-bottom:10px; font-family:var(--font-sans); }
+.card p { font-size:13px; color:var(--muted); line-height:1.6; margin-bottom:12px; }
+time { font-size:11.5px; color:var(--muted); }
+@media(max-width:900px) { .grid { grid-template-columns:repeat(2,1fr); } }
+@media(max-width:500px) { .grid { grid-template-columns:1fr; } }
+</style>

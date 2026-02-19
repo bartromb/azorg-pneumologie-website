@@ -1,0 +1,9 @@
+naam: "Dr. Inge Muylle"
+titel: "Longarts"
+specialisatie: "COPD"
+geconventioneerd: true
+campussen:
+  - "aalst-moorselbaan"
+  - "asse"
+foto: "/images/artsen/inge-muylle.jpg"
+volgorde: 8

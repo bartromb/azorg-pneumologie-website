@@ -1,0 +1,9 @@
+naam: "Dr. Valerie Adam"
+titel: "Longarts"
+specialisatie: "Slaapkliniek"
+geconventioneerd: true
+campussen:
+  - "aalst-moorselbaan"
+  - "geraardsbergen"
+foto: "/images/artsen/valerie-adam.jpg"
+volgorde: 2

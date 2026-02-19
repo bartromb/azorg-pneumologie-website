@@ -1,0 +1,10 @@
+naam: "Dr. An Pletinckx"
+titel: "Pneumoloog"
+specialisatie: "Longrevalidatie"
+geconventioneerd: true
+campussen:
+  - "asse"
+  - "aalst-merestraat"
+  - "wetteren"
+foto: "/images/artsen/an-pletinckx.jpg"
+volgorde: 10

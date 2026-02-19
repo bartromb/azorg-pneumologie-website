@@ -1,0 +1,142 @@
+---
+// Nav.astro — sticky navigation with real AZOrg logo SVG
+const currentPath = Astro.url.pathname;
+---
+
+<style>
+.topbar {
+  background: #0F0F1A; color: rgba(255,255,255,.6);
+  font-size: 12px; height: 34px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px;
+}
+.topbar a { color: rgba(255,255,255,.6); text-decoration: none; margin-left: 16px; transition: color .18s; }
+.topbar a:hover { color: #fff; }
+
+nav {
+  position: sticky; top: 0; z-index: 300;
+  background: var(--white); border-bottom: 3px solid var(--red);
+  height: var(--nav-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px;
+  box-shadow: 0 1px 16px rgba(0,0,0,.07);
+}
+.nav-left { display: flex; align-items: center; gap: 14px; }
+.logo-link { display: flex; align-items: center; text-decoration: none; }
+.logo-pill {
+  display: flex; align-items: center;
+  background: var(--red); border-radius: 6px;
+  padding: 5px 9px; color: white;
+}
+.logo-pill svg { height: 38px; width: auto; display: block; }
+.nav-divider { width: 1px; height: 28px; background: var(--border); }
+.nav-service { font-family: var(--font-serif); font-size: 15px; color: var(--text); font-weight: 600; }
+.nav-service small {
+  display: block; font-family: var(--font-sans);
+  font-size: 10.5px; color: var(--red); font-weight: 700;
+  letter-spacing: .07em; text-transform: uppercase; margin-top: 1px;
+}
+.nav-links { display: flex; align-items: center; }
+.nl {
+  padding: 0 13px; height: var(--nav-h);
+  display: inline-flex; align-items: center;
+  font-size: 13.5px; font-weight: 600;
+  color: var(--text); text-decoration: none;
+  border-bottom: 3px solid transparent;
+  transition: all .2s; white-space: nowrap;
+}
+.nl:hover, .nl.act { color: var(--red); border-bottom-color: var(--red); }
+.nav-cta {
+  margin-left: 14px; background: var(--red); color: #fff;
+  padding: 9px 20px; border-radius: 4px;
+  font-size: 13.5px; font-weight: 700;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 7px;
+  transition: all .2s; white-space: nowrap;
+}
+.nav-cta:hover { background: var(--red-d); transform: translateY(-1px); }
+@media(max-width:960px) {
+  .topbar, nav { padding: 0 20px; }
+  .nav-links { display: none; }
+}
+</style>
+
+<div class="topbar">
+  <div style="display:flex;align-items:center;gap:20px">
+    <a href="https://www.azorg.be" style="color:rgba(255,255,255,.9);font-weight:600;border-right:1px solid rgba(255,255,255,.15);padding-right:16px">← AZOrg Ziekenhuis</a>
+    <a href="/nieuws">Nieuws</a>
+    <a href="https://mynexuz.be" target="_blank">Patiëntenportaal</a>
+  </div>
+  <div>
+    <a href="#">Patiënt</a>
+    <a href="#">Professional</a>
+    <a href="/contact">Praktisch</a>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-left">
+    <a href="/" class="logo-link" title="AZOrg Ziekenhuis">
+      <span class="logo-pill">
+        <!-- Officieel AZOrg logo SVG -->
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+          <g>
+            <path fill="white" d="M26.3612,26.5322c0,1.5826,1.2,2.7537,2.8344,2.7537c0.7434,0,1.4495-0.2329,1.9367-0.6986v-2.0331H30.752
+            v1.8699c-0.4412,0.3569-0.9691,0.4964-1.5411,0.4964c-1.4105,0-2.456-1.0318-2.456-2.3899s1.0455-2.39,2.456-2.39
+            c0.6585,0,1.2236,0.1783,1.6955,0.6442l0.2479-0.2635c-0.4804-0.4964-1.1694-0.7447-1.9519-0.7447
+            c-1.643,0-2.8429,1.1713-2.8429,2.7539 M21.349,24.1728h1.5497c1.1626,0,1.7821,0.5354,1.7821,1.4738s-0.6195,1.4738-1.7821,1.4738
+            H21.349V24.1728z M22.8987,23.8159h-1.9452v5.431h0.3955v-1.7763h1.5497c0.185,0,0.3565-0.0154,0.5261-0.0392l1.2934,1.8155h0.4497
+            l-1.3561-1.9004c0.8063-0.2398,1.2695-0.8381,1.2695-1.6982c0-1.1491-0.8213-1.8307-2.1844-1.8307 M14.0065,26.5322
+            c0-1.3735,1.0387-2.3899,2.4254-2.3899c1.3867,0,2.417,1.0164,2.417,2.3899s-1.0387,2.39-2.417,2.39
+            C15.0537,28.9221,14.0065,27.9057,14.0065,26.5322z M13.611,26.5322c0,1.5741,1.2,2.7537,2.8192,2.7537
+            c1.6192,0,2.8192-1.1711,2.8192-2.7537c0-1.5826-1.2085-2.7537-2.8192-2.7537C14.8195,23.7785,13.611,24.9581,13.611,26.5322z
+            M12.3669,24.1728L8.6261,28.968v0.2788h4.3688v-0.3571H9.176l3.7341-4.7951v-0.2788H8.6736v0.3569h3.695H12.3669z M3.2083,27.1305
+            l1.032-2.0773l1.032,2.0773H3.2083z M3.5426,23.8192l-2.697,5.4293H2.156l0.5754-1.1593h3.0178l0.5754,1.1593h1.3103l-2.697-5.4293
+            H3.5426z M26.782,4.8644h1.212l-4.4758,9.0074l-2.5579-5.1471c2.1369-0.5916,4.0327-1.8562,5.8216-3.862 M10.4201,10.0047
+            L7.8657,4.8644h1.2119c0.8707,0.974,1.7652,1.7729,2.7004,2.407l0.168-0.34l0.3157,0.2074
+            c1.7143,1.0879,3.5694,1.6063,5.6673,1.6063c0.8673,0,1.6939-0.0901,2.4866-0.272l0.3785-0.0816l0.1663,0.3332l0.0034,0.0085
+            l-0.3751,0.0867c-0.1035,0.0255-0.2088,0.0476-0.314,0.0697c0.1052-0.0221,0.2088-0.0442,0.3123-0.0697
+            c-0.8453,0.2006-1.7279,0.3009-2.658,0.3009c-2.1369,0-4.0294-0.5202-5.7759-1.6063c-0.0204-0.0119-0.039-0.0238-0.0594-0.0357
+            l-0.3174-0.204l-1.3527,2.7231l3.0976,6.2486c0.7926-0.1819,1.6175-0.272,2.4866-0.272c2.0962,0,3.953,0.5202,5.6673,1.6063
+            l0.0033-0.0051v0.0051l1.8417-3.7056l0.2088,0.4199l-1.7364,3.4949l-0.3158-0.2074l-1.0217,2.0568
+            c-0.1001,0.2006-0.2122,0.4029-0.3276,0.5847l-0.0051,0.0085c-0.4854,0.8652-1.402,1.4024-2.3915,1.4024
+            c-0.9895,0-1.901-0.5337-2.3847-1.3905l-0.0051-0.0085c-0.1188-0.1904-0.2325-0.391-0.3344-0.5966l-1.6854-3.3912L13.1477,16.34
+            l-2.938-5.912l-4.8729,9.8046h1.9841l0.112-0.1258c1.7567-1.9684,3.617-3.2008,5.7148-3.7668l1.7227,3.466
+            c0.1069,0.2159,0.2241,0.425,0.3496,0.6255c0.5499,0.974,1.587,1.5774,2.7089,1.5774c1.1219,0,2.1624-0.6085,2.7157-1.5893
+            c0.1222-0.1938,0.2376-0.3995,0.3428-0.6136l1.0015-2.0143c0.896,0.6102,1.7549,1.3803,2.5917,2.3151l0.1119,0.1258h1.9843
+            l-2.9501-5.9375L28.6,4.4904h-1.9843l-0.1119,0.1258c-1.7568,1.9684-3.6171,3.2008-5.7149,3.7668l-1.7228-3.4659
+            c-0.1052-0.2142-0.2223-0.4199-0.3428-0.6136c-0.5533-0.9808-1.5921-1.5893-2.7157-1.5893c-1.1236,0-2.159,0.6051-2.7089,1.5774
+            c-0.1256,0.2006-0.2427,0.4097-0.3496,0.6255l-1.0014,2.016c-0.8962-0.6102-1.755-1.3803-2.5901-2.3152l-0.112-0.1258H7.2614
+            l2.9499,5.9375l0.2088-0.4216V10.0047z"/>
+          </g>
+        </svg>
+      </span>
+    </a>
+    <div class="nav-divider"></div>
+    <div class="nav-service">
+      Pneumologie
+      <small>Longziekten</small>
+    </div>
+  </div>
+
+  <div class="nav-links">
+    <a href="/#over"        class:list={['nl', {act: currentPath === '/'}]}>Over de dienst</a>
+    <a href="/campussen"    class:list={['nl', {act: currentPath.startsWith('/campussen')}]}>Campussen</a>
+    <a href="/artsen"       class:list={['nl', {act: currentPath.startsWith('/artsen')}]}>Artsen</a>
+    <a href="/aandoeningen" class:list={['nl', {act: currentPath.startsWith('/aandoeningen')}]}>Aandoeningen</a>
+    <a href="/klinieken"    class:list={['nl', {act: currentPath.startsWith('/klinieken')}]}>Klinieken</a>
+    <a href="/nieuws"       class:list={['nl', {act: currentPath.startsWith('/nieuws')}]}>Nieuws</a>
+  </div>
+
+  <a href="https://mynexuz.be/afspraken/maak-afspraak?ziekenhuisCode=OLVA&medischeDienst=3012"
+     class="nav-cta" target="_blank">
+    📅 Online afspraak
+  </a>
+</nav>
+
+<div style="background:var(--gray1);border-bottom:1px solid var(--border);padding:8px 48px;font-size:12px;color:var(--muted)">
+  <a href="https://www.azorg.be" style="color:var(--red);text-decoration:none">AZOrg</a>
+  <span style="margin:0 7px;color:var(--border)">›</span>
+  <a href="https://www.azorg.be/nl/onze-medische-diensten" style="color:var(--red);text-decoration:none">Medische diensten</a>
+  <span style="margin:0 7px;color:var(--border)">›</span>
+  Pneumologie / Longziekten
+</div>

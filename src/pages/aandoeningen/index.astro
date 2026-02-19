@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const items = (await getCollection('aandoeningen'))
+  .filter(a => a.data.gepubliceerd)
+  .sort((a, b) => a.data.volgorde - b.data.volgorde);
+---
+
+<BaseLayout title="Longaandoeningen">
+  <Nav />
+
+  <section class="section container">
+    <div class="lbl">Patiëntinformatie</div>
+    <h1>Longaandoeningen</h1>
+    <p class="lead">Informatie over de meest voorkomende longaandoeningen die wij behandelen.</p>
+
+    <div class="grid">
+      {items.map(a => (
+        <a href={`/aandoeningen/${a.id}`} class="card">
+          <div class="card-bar" style={`background:#${a.data.kleur}`}></div>
+          <div class="card-body">
+            <span class="ico">{a.data.icoon}</span>
+            <h2>{a.data.titel}</h2>
+            <p>{a.data.excerpt}</p>
+            <span class="more" style={`color:#${a.data.kleur}`}>Lees meer →</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+h1 { font-size: clamp(28px,3.5vw,42px); margin-bottom:12px; }
+.lead { font-size:16px; color:var(--muted); margin-bottom:48px; }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:8px; overflow:hidden; }
+.card { background:var(--white); padding:28px 24px; display:block; text-decoration:none; transition:background .2s; }
+.card:hover { background:var(--gray1); }
+.card-bar { height:3px; width:36px; border-radius:2px; margin-bottom:14px; }
+.ico { font-size:26px; display:block; margin-bottom:10px; }
+.card h2 { font-size:17px; color:var(--text); margin-bottom:8px; font-family:var(--font-sans); font-weight:700; }
+.card p { font-size:13.5px; color:var(--muted); line-height:1.65; }
+.more { display:inline-flex; align-items:center; gap:5px; font-size:13px; font-weight:700; margin-top:14px; }
+@media(max-width:900px) { .grid { grid-template-columns:repeat(2,1fr); } }
+@media(max-width:500px) { .grid { grid-template-columns:1fr; } }
+</style>

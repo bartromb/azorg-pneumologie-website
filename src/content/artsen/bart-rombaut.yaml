@@ -1,0 +1,9 @@
+naam: "Dr. Bart Rombaut"
+titel: "Pneumoloog"
+specialisatie: "Longembolie"
+geconventioneerd: true
+campussen:
+  - "aalst-merestraat"
+  - "wetteren"
+foto: "/images/artsen/bart-rombaut.jpg"
+volgorde: 11

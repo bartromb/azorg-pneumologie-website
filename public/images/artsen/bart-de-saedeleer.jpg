@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" width="200" height="240">
+  <rect width="200" height="240" fill="#E8A00015"/>
+  <circle cx="100" cy="90" r="50" fill="#E8A00030"/>
+  <circle cx="100" cy="75" r="32" fill="#E8A00055"/>
+  <text x="100" y="86" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="bold" fill="#E8A000">BS</text>
+  <ellipse cx="100" cy="175" rx="65" ry="45" fill="#E8A00025"/>
+</svg>

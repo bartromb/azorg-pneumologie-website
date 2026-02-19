@@ -1,0 +1,8 @@
+naam: "Dr. Bart De Saedeleer"
+titel: "Longarts"
+specialisatie: "Infectiologie"
+geconventioneerd: true
+campussen:
+  - "geraardsbergen"
+foto: "/images/artsen/bart-de-saedeleer.jpg"
+volgorde: 5

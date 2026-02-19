@@ -1,0 +1,9 @@
+naam: "Dr. Dimitri Stylemans"
+titel: "Pneumoloog"
+specialisatie: "Slaapapneu"
+geconventioneerd: true
+campussen:
+  - "aalst-moorselbaan"
+  - "ninove"
+foto: "/images/artsen/dimitri-stylemans.jpg"
+volgorde: 12
