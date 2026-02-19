@@ -1,10 +1,17 @@
 # Dienst Pneumologie — AZOrg Ziekenhuis
 
-Officiële website van de Dienst Pneumologie / Longziekten van AZOrg Ziekenhuis.
+Draft website van de Dienst Pneumologie / Longziekten van AZOrg Ziekenhuis.
 
 **Gebouwd met** [Astro](https://astro.build) · **Inhoud via** Markdown/YAML in Git · **Deployment** via GitHub Actions naar eigen AZOrg-server
 
 ---
+## 🔎 Statische pagina (demo)
+
+- **Preview (rendered):** [longziekten-azorg-v2.html](https://htmlpreview.github.io/?https://github.com/bartromb/azorg-pneumologie-website/blob/main/longziekten-azorg-v2.html)  
+  *(als je op de link klikt, zie je de statische HTML-pagina in je browser)*
+- **Bronbestand in deze repo:** [`longziekten-azorg-v2.html`](./longziekten-azorg-v2.html)
+
+
 
 ## 🚀 Snel starten
 
