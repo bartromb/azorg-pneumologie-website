@@ -206,30 +206,6 @@ h2.st-wh{color:#fff}
 .news-body p{font-size:13px;color:var(--muted);line-height:1.6}
 .news-date{font-size:11.5px;color:var(--muted);margin-top:12px;display:block}
 
-/* ── TOOLS ── */
-.tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
-.tool-box{background:var(--gray1);border:1px solid var(--border);border-radius:10px;padding:30px}
-.new-badge{display:inline-block;background:var(--red);color:#fff;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:3px;margin-bottom:10px}
-.tool-box h3{font-family:'Source Serif 4',Georgia,serif;font-size:20px;color:var(--text);margin-bottom:7px}
-.tool-desc{font-size:13.5px;color:var(--muted);margin-bottom:20px;line-height:1.6}
-.sym-wrap{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
-.stag{padding:6px 13px;border:1.5px solid var(--border);background:#fff;border-radius:20px;font-size:12.5px;font-weight:500;color:var(--text);cursor:pointer;transition:all .18s}
-.stag:hover,.stag.on{background:var(--red);border-color:var(--red);color:#fff}
-.sym-out{background:#fff;border-left:4px solid var(--red);padding:14px 16px;font-size:13px;color:var(--text);line-height:1.6;display:none;border-radius:0 5px 5px 0}
-.sym-out.show{display:block}
-.sym-out strong{color:var(--red)}
-.sym-out.urg{border-left-color:#c0392b}
-.sym-out.urg strong{color:#c0392b}
-.inh-tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:18px}
-.itab{padding:7px 15px;border:1.5px solid var(--border);background:#fff;border-radius:4px;font-size:12.5px;font-weight:600;color:var(--muted);cursor:pointer;transition:all .18s}
-.itab.on,.itab:hover{background:var(--red);border-color:var(--red);color:#fff}
-.inh-list{list-style:none}
-.inh-li{display:flex;gap:11px;padding:10px 0;border-bottom:1px solid var(--border)}
-.inh-li:last-child{border-bottom:none}
-.inh-n{width:25px;height:25px;border-radius:50%;background:var(--red);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.inh-li strong{font-size:13px;color:var(--text);display:block;margin-bottom:2px}
-.inh-li p{font-size:12px;color:var(--muted);line-height:1.5}
-
 /* ── CONTACT ── */
 .praktisch-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
 .praktisch-left h3{font-family:'Source Serif 4',Georgia,serif;font-size:22px;color:var(--text);margin-bottom:22px}
@@ -945,51 +921,6 @@ footer{background:#0F0F1A;color:rgba(255,255,255,.5);padding:52px 48px 28px}
   </div>
 </section>
 
-<!-- PATIËNTTOOLS -->
-<section class="sec sec-gray" id="tools">
-  <div class="lbl">✨ Patiëntondersteuning</div>
-  <h2 class="st">Handige tools &amp; informatie</h2>
-  <p class="sd">Digitale hulpmiddelen ter ondersteuning van patiënten met longaandoeningen. Deze tools vervangen geen medisch consult.</p>
-  <div class="tools-grid">
-    <div class="tool-box rev">
-      <div class="new-badge">Nieuw</div>
-      <h3>Klachtennavigator</h3>
-      <p class="tool-desc">Selecteer uw klachten voor een eerste oriëntatie en aanbeveling. Vervangt geen medisch consult.</p>
-      <div class="sym-wrap">
-        <span class="stag" onclick="tog(this)">Kortademigheid</span>
-        <span class="stag" onclick="tog(this)">Aanhoudende hoest</span>
-        <span class="stag" onclick="tog(this)">Piepende ademhaling</span>
-        <span class="stag" onclick="tog(this)">Pijn op de borst</span>
-        <span class="stag" onclick="tog(this)">Snurken / apneu</span>
-        <span class="stag" onclick="tog(this)">Overmatige vermoeidheid</span>
-        <span class="stag" onclick="tog(this)">Koorts &amp; slijmen</span>
-        <span class="stag" onclick="tog(this)">Bloed ophoesten</span>
-        <span class="stag" onclick="tog(this)">Ongewild gewichtsverlies</span>
-        <span class="stag" onclick="tog(this)">Nachtelijk zweten</span>
-      </div>
-      <div class="sym-out" id="sOut"></div>
-    </div>
-    <div class="tool-box rev">
-      <div class="new-badge">Nieuw</div>
-      <h3>Inhalatiegids</h3>
-      <p class="tool-desc">Correcte inhalatietechniek is cruciaal voor de werking van uw medicatie. Selecteer uw type inhalator.</p>
-      <div class="inh-tabs">
-        <button class="itab on" onclick="iT(this,'pMDI')">Dosisaerosol (pMDI)</button>
-        <button class="itab" onclick="iT(this,'turbo')">Turbohaler / Diskus</button>
-        <button class="itab" onclick="iT(this,'respi')">Respimat</button>
-        <button class="itab" onclick="iT(this,'spacer')">Voorzetkamer</button>
-      </div>
-      <ul class="inh-list" id="iL">
-        <li class="inh-li"><div class="inh-n">1</div><div><strong>Schud de inhalator</strong><p>Schud krachtig gedurende 5 seconden voor elk gebruik.</p></div></li>
-        <li class="inh-li"><div class="inh-n">2</div><div><strong>Adem volledig uit</strong><p>Blaas alle lucht rustig uit de longen, weg van de inhalator.</p></div></li>
-        <li class="inh-li"><div class="inh-n">3</div><div><strong>Omsluit het mondstuk</strong><p>Sluit uw lippen stevig rond het mondstuk, houd inhalator rechtop.</p></div></li>
-        <li class="inh-li"><div class="inh-n">4</div><div><strong>Inhaleer en activeer gelijktijdig</strong><p>Adem langzaam en diep in terwijl u de inhalator indrukt.</p></div></li>
-        <li class="inh-li"><div class="inh-n">5</div><div><strong>Houd adem 10 seconden vast</strong><p>Voor optimale depositie van het medicijn in de luchtwegen.</p></div></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
 <!-- CTA BANNER -->
 <div class="cta-band">
   <div>
@@ -1157,43 +1088,7 @@ footer{background:#0F0F1A;color:rgba(255,255,255,.5);padding:52px 48px 28px}
 const obs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis') }), {threshold:.07});
 document.querySelectorAll('.rev').forEach(r => obs.observe(r));
 
-// Symptom checker
-const SD = {
-  'Bloed ophoesten': { t: '<strong>⚠️ Raadpleeg onmiddellijk een arts.</strong> Bloedophoesten vereist urgente medische evaluatie. Bel uw huisarts of ga naar de spoeddienst van AZOrg.', u: true },
-  'Ongewild gewichtsverlies,Aanhoudende hoest': { t: '<strong>Raadpleeg uw arts.</strong> Deze combinatie vraagt verdere evaluatie via CT-scan en bronchoscopie. Maak een afspraak via 053 72 42 89.', u: false },
-  'Kortademigheid,Piepende ademhaling': { t: '<strong>Mogelijke diagnose: Astma of COPD.</strong> Een spirometrie (longfunctiemeting) kan dit bevestigen. Contacteer ons secretariaat op 053 72 42 89.', u: false },
-  'Snurken / apneu,Overmatige vermoeidheid': { t: '<strong>Mogelijke diagnose: Slaapapneu (OSAS).</strong> Onze slaapkliniek kan een polysomnografie plannen. Bel 053 72 42 89.', u: false },
-  'Nachtelijk zweten,Ongewild gewichtsverlies': { t: '<strong>Raadpleeg uw arts.</strong> Deze symptomen vragen een uitgebreide evaluatie. Contacteer uw huisarts of ons secretariaat.', u: false }
-};
-let sel = [];
-function tog(el) {
-  el.classList.toggle('on');
-  const t = el.textContent;
-  sel = el.classList.contains('on') ? [...sel, t] : sel.filter(s => s !== t);
-  const out = document.getElementById('sOut');
-  if (!sel.length) { out.style.display = 'none'; return; }
-  let m = { t: 'Op basis van uw klachten adviseren wij een afspraak bij onze longartsen. <strong>Bel 053 72 42 89</strong> of maak online een afspraak via mynexuzhealth.', u: false };
-  for (const [k, v] of Object.entries(SD)) {
-    const ks = k.split(',');
-    if (sel.includes(k) || ks.every(k2 => sel.includes(k2))) { m = v; break; }
-  }
-  out.innerHTML = m.t;
-  out.className = 'sym-out show' + (m.u ? ' urg' : '');
-}
 
-// Inhalation guide
-const ID = {
-  pMDI: [['Schud de inhalator','Schud krachtig gedurende 5 seconden voor elk gebruik.'],['Adem volledig uit','Blaas alle lucht rustig uit de longen, weg van de inhalator.'],['Omsluit het mondstuk','Sluit uw lippen stevig rond het mondstuk, houd inhalator rechtop.'],['Inhaleer en activeer gelijktijdig','Adem langzaam en diep in terwijl u de inhalator indrukt.'],['Houd adem 10 seconden vast','Voor optimale depositie van het medicijn in de luchtwegen.']],
-  turbo: [['Draai het beschermdopje af','Verwijder het dopje van de turbohaler.'],['Laad de dosis','Draai de ring volledig rechts, dan links tot een klik hoorbaar is.'],['Adem volledig uit','Nooit in de turbohaler uitblazen — weg van het mondstuk.'],['Inhaleer krachtig en snel','Zet mondstuk tussen de lippen en inhaleer zo snel en diep mogelijk.'],['Houd adem 10 seconden vast','Haal daarna rustig adem via de neus.']],
-  respi: [['Draai de dop open','Draai het beschermdopje van het mondstuk af.'],['Draai de basis 180° (klik)','Draai totdat een klik hoorbaar is — één dosis is geladen.'],['Adem volledig uit','Blaas rustig uit, weg van de inhalator.'],['Inhaleer langzaam en diep','Zet mondstuk tussen de lippen, inhaleer langzaam en diep.'],['Houd adem 10 seconden vast','Sluit daarna de dop terug.']],
-  spacer: [['Bevestig de inhalator aan de voorzetkamer','Koppel de inhalator stevig aan het uiteinde van de voorzetkamer.'],['Adem volledig uit','Blaas alle lucht uit de longen.'],['Omsluit het mondstuk van de voorzetkamer','Sluit uw lippen stevig rond het mondstuk.'],['Druk de inhalator eenmaal in','Activeer één dosis in de kamer.'],['Inhaleer langzaam en houd 10 sec vast','Adem langzaam en diep in, houd 10 seconden vast.']]
-};
-function iT(btn, t) {
-  document.querySelectorAll('.itab').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
-  const list = document.getElementById('iL');
-  list.innerHTML = ID[t].map((s,i) => `<li class="inh-li"><div class="inh-n">${i+1}</div><div><strong>${s[0]}</strong><p>${s[1]}</p></div></li>`).join('');
-}
 </script>
 </body>
 </html>
