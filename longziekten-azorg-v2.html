@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pneumologie / Longziekten — AZOrg Ziekenhuis</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red:    #C8102E;
+  --red-d:  #A00D26;
+  --red-l:  #FCEEF0;
+  --dark:   #7A0A1C;
+  --teal:   #2D9B8A;
+  --green:  #6AAF2E;
+  --yellow: #E8A000;
+  --purple: #7B4FA6;
+  --gray1:  #F4F5F7;
+  --gray2:  #E8EAED;
+  --text:   #1C1C2E;
+  --muted:  #5A6070;
+  --border: #DDE0E6;
+  --white:  #FFFFFF;
+  --nav-h:  68px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Source Sans 3',sans-serif;font-size:16px;color:var(--text);background:var(--white);overflow-x:hidden;line-height:1.55}
+
+/* ── TOPBAR ── */
+.topbar{background:#0F0F1A;color:rgba(255,255,255,.6);font-size:12px;height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 48px}
+.topbar a{color:rgba(255,255,255,.6);text-decoration:none;margin-left:16px;transition:color .18s}
+.topbar a:hover{color:#fff}
+.tb-l{display:flex;align-items:center;gap:20px}
+.tb-l a{margin-left:0;display:flex;align-items:center;gap:5px;font-size:11.5px}
+.tb-l a:first-child{color:rgba(255,255,255,.9);font-weight:600;border-right:1px solid rgba(255,255,255,.12);padding-right:16px;margin-right:4px}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:300;background:var(--white);border-bottom:3px solid var(--red);height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 48px;box-shadow:0 1px 16px rgba(0,0,0,.07)}
+.nav-left{display:flex;align-items:center;gap:16px}
+.logo-pill{display:flex;align-items:center;background:var(--red);border-radius:6px;padding:6px 10px;color:white}
+.azorg-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.azorg-logo svg{height:40px;width:auto}
+.nav-divider{width:1px;height:28px;background:var(--border);margin:0 4px}
+.nav-service{font-family:'Source Serif 4',Georgia,serif;font-size:15px;color:var(--text);font-weight:600}
+.nav-service small{display:block;font-family:'Source Sans 3',sans-serif;font-size:10.5px;color:var(--red);font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-top:1px}
+.nav-links{display:flex;align-items:center;gap:0}
+.nl{padding:0 13px;height:var(--nav-h);display:inline-flex;align-items:center;font-size:13.5px;font-weight:600;color:var(--text);text-decoration:none;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap}
+.nl:hover,.nl.act{color:var(--red);border-bottom-color:var(--red)}
+.nav-cta{margin-left:14px;background:var(--red);color:#fff;padding:9px 20px;border-radius:4px;font-size:13.5px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:7px;transition:all .2s;white-space:nowrap}
+.nav-cta:hover{background:var(--red-d);transform:translateY(-1px)}
+
+/* ── BREADCRUMB ── */
+.bc{background:var(--gray1);border-bottom:1px solid var(--border);padding:8px 48px;font-size:12px;color:var(--muted)}
+.bc a{color:var(--red);text-decoration:none}
+.bc a:hover{text-decoration:underline}
+.bc span{margin:0 7px;color:var(--border)}
+
+/* ── HERO ── */
+.hero{display:grid;grid-template-columns:1fr 460px;min-height:440px}
+.hero-body{padding:60px 48px;display:flex;flex-direction:column;justify-content:center}
+.svc-badge{display:inline-flex;align-items:center;gap:7px;background:var(--red-l);color:var(--red);font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:5px 13px;border-radius:3px;margin-bottom:16px;width:fit-content}
+.svc-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--red)}
+.hero h1{font-family:'Source Serif 4',Georgia,serif;font-size:clamp(32px,3.8vw,50px);font-weight:700;color:var(--text);line-height:1.13;margin-bottom:16px}
+.hero h1 .hi{color:var(--red)}
+.hero-intro{font-size:16.5px;color:var(--muted);line-height:1.72;max-width:500px;margin-bottom:28px;font-weight:300}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:all .2s;border:2px solid transparent;cursor:pointer}
+.btn-red{background:var(--red);color:#fff;border-color:var(--red)}
+.btn-red:hover{background:var(--red-d);border-color:var(--red-d);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--red);border-color:var(--red)}
+.btn-ghost:hover{background:var(--red-l)}
+.hero-campussen{display:flex;flex-wrap:wrap;gap:7px}
+.hero-campussen p{font-size:11.5px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em;width:100%}
+.campus-pill{display:inline-flex;align-items:center;gap:5px;background:var(--gray1);border:1px solid var(--border);color:var(--muted);font-size:12px;font-weight:600;padding:4px 11px;border-radius:20px}
+.campus-pill::before{content:'📍';font-size:10px}
+.hero-img{position:relative;overflow:hidden;background:var(--red-l)}
+.hero-img img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.9)}
+.hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.15) 0%,transparent 40%)}
+.hero-img::before{content:'';position:absolute;right:0;top:0;width:6px;height:100%;background:linear-gradient(to bottom,var(--red) 25%,var(--teal) 25%,var(--teal) 50%,var(--yellow) 50%,var(--yellow) 75%,var(--purple) 75%);z-index:1}
+
+/* ── STATS BAR ── */
+.statsbar{background:#0F0F1A;display:grid;grid-template-columns:repeat(5,1fr)}
+.stbl{padding:18px 20px;border-right:1px solid rgba(255,255,255,.06);text-align:center}
+.stbl:last-child{border-right:none}
+.stbl strong{display:block;font-family:'Source Serif 4',Georgia,serif;font-size:30px;color:var(--red);line-height:1;margin-bottom:3px}
+.stbl span{font-size:11px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.05em}
+
+/* ── QUICK ACCESS ── */
+.qa-bar{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border);background:var(--white)}
+.qa-item{display:flex;align-items:center;gap:13px;padding:18px 22px;text-decoration:none;color:var(--text);border-right:1px solid var(--border);transition:all .2s}
+.qa-item:last-child{border-right:none}
+.qa-item:hover{background:var(--red-l);color:var(--red)}
+.qa-ico{width:38px;height:38px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;transition:transform .2s}
+.qa-item:hover .qa-ico{transform:scale(1.08);background:var(--red-d)}
+.qa-txt strong{display:block;font-size:13px;font-weight:700}
+.qa-txt span{font-size:11.5px;color:var(--muted)}
+
+/* ── SECTION ── */
+.sec{padding:64px 48px}
+.sec-gray{background:var(--gray1)}
+.sec-dark{background:#0F0F1A}
+.lbl{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--red);margin-bottom:10px}
+.lbl::before{content:'';display:inline-block;width:14px;height:2px;background:var(--red)}
+.lbl-wh{color:rgba(255,255,255,.7)}
+.lbl-wh::before{background:rgba(255,255,255,.5)}
+h2.st{font-family:'Source Serif 4',Georgia,serif;font-size:clamp(26px,3vw,38px);color:var(--text);line-height:1.18;margin-bottom:13px}
+h2.st-wh{color:#fff}
+.sd{font-size:16px;color:var(--muted);line-height:1.7;max-width:640px;margin-bottom:42px}
+.sd-wh{color:rgba(255,255,255,.65)}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.about-text p{font-size:15.5px;line-height:1.78;color:var(--muted);margin-bottom:16px}
+.about-text p:last-child{margin-bottom:0}
+.about-text strong{color:var(--text)}
+.info-box{background:var(--red-l);border:1px solid rgba(200,16,46,.15);border-radius:8px;padding:28px;margin-bottom:20px}
+.info-box h4{font-family:'Source Serif 4',Georgia,serif;font-size:17px;color:var(--red);margin-bottom:12px}
+.info-box ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.info-box li{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--text)}
+.info-box li::before{content:'✓';background:var(--red);color:#fff;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
+.partners-box{background:var(--gray1);border-radius:8px;padding:22px}
+.partners-box h4{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.partner-tag{display:inline-block;background:#fff;border:1px solid var(--border);color:var(--muted);font-size:12px;padding:4px 12px;border-radius:20px;margin:3px}
+
+/* ── CAMPUSSEN ── */
+.campus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.campus-card{background:var(--white);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:all .25s}
+.campus-card:hover{border-color:var(--red);box-shadow:0 4px 20px rgba(200,16,46,.1);transform:translateY(-2px)}
+.cc-head{background:var(--red);color:#fff;padding:16px 20px;display:flex;align-items:center;gap:10px}
+.cc-head.teal{background:var(--teal)}
+.cc-head.green{background:var(--green)}
+.cc-head.yellow{background:var(--yellow)}
+.cc-head.purple{background:var(--purple)}
+.cc-head.dark{background:var(--dark)}
+.cc-head-ico{font-size:22px}
+.cc-head-txt strong{display:block;font-size:15px;font-weight:700}
+.cc-head-txt span{font-size:11.5px;opacity:.8}
+.cc-body{padding:18px 20px}
+.cc-row{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start}
+.cc-row:last-child{margin-bottom:0}
+.cc-ico{width:28px;height:28px;background:var(--gray1);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.cc-row a{color:var(--red);text-decoration:none;font-size:13.5px;font-weight:600}
+.cc-row a:hover{text-decoration:underline}
+.cc-row p{font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.4}
+.cc-artsen{margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+.cc-artsen span{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px}
+.arts-chips{display:flex;flex-wrap:wrap;gap:5px}
+.arts-chip{background:var(--gray1);border:1px solid var(--border);color:var(--text);font-size:11.5px;padding:3px 9px;border-radius:3px;font-weight:500}
+
+/* ── ARTSEN ── */
+.artsen-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.arts-card{background:var(--white);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:all .25s}
+.arts-card:hover{border-color:var(--red);box-shadow:0 6px 24px rgba(200,16,46,.1);transform:translateY(-3px)}
+.arts-top{height:5px}
+.arts-body{padding:20px 16px;text-align:center}
+.arts-av{width:80px;height:80px;border-radius:50%;background:var(--red-l);border:2px solid rgba(200,16,46,.15);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:26px;overflow:hidden;text-decoration:none}
+.arts-av img{width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:50%}
+.arts-card h3{font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:4px;line-height:1.3}
+.arts-card .arts-titel{font-size:11.5px;color:var(--muted);margin-bottom:8px;font-style:italic}
+.arts-sp{display:inline-block;font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:20px;background:var(--red-l);color:var(--red);margin-bottom:6px}
+.arts-campussen{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin-top:8px}
+.arts-camp{font-size:10.5px;background:var(--gray1);border:1px solid var(--border);color:var(--muted);padding:2px 8px;border-radius:10px}
+.arts-foto-link{display:block;font-size:10px;color:var(--red);text-decoration:none;margin-top:8px;opacity:.75}
+.arts-foto-link:hover{opacity:1;text-decoration:underline}
+.conv-badge{display:inline-flex;align-items:center;gap:3px;font-size:9.5px;background:#e8f5e9;color:#2e7d32;padding:2px 7px;border-radius:10px;font-weight:700;margin-top:4px}
+
+/* ── AANDOENINGEN ── */
+.cond-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.cond{background:var(--white);padding:26px 20px;transition:background .2s;cursor:pointer;text-decoration:none;display:block}
+.cond:hover{background:var(--red-l)}
+.cond-bar{height:3px;width:32px;border-radius:2px;margin-bottom:16px}
+.cond h3{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:7px}
+.cond p{font-size:13px;color:var(--muted);line-height:1.6}
+.cond-more{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:700;color:var(--red);margin-top:12px}
+
+/* ── ONDERZOEKEN ── */
+.proc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.proc{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:20px;display:flex;gap:13px;cursor:pointer;transition:all .2s;text-decoration:none}
+.proc:hover{border-color:var(--red);background:var(--red-l)}
+.proc-ico{width:40px;height:40px;border-radius:6px;background:var(--gray1);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;transition:background .2s}
+.proc:hover .proc-ico{background:var(--red);color:#fff}
+.proc h3{font-size:14px;font-weight:700;color:var(--text);margin-bottom:5px}
+.proc p{font-size:12.5px;color:var(--muted);line-height:1.55}
+
+/* ── KLINIEKEN ── */
+.klin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.klin{background:var(--white);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:all .25s}
+.klin:hover{box-shadow:0 6px 24px rgba(0,0,0,.09);transform:translateY(-2px)}
+.klin-top{height:6px}
+.klin-body{padding:24px 22px}
+.klin-body .ki{font-size:28px;margin-bottom:12px;display:block}
+.klin-body h3{font-family:'Source Serif 4',Georgia,serif;font-size:17px;color:var(--text);margin-bottom:8px}
+.klin-body p{font-size:13px;color:var(--muted);line-height:1.65}
+.klin-ft{padding:12px 22px;background:var(--gray1);border-top:1px solid var(--border);font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:space-between;text-decoration:none;color:var(--text)}
+.klin-ft span{font-size:11px;color:var(--muted)}
+
+/* ── NIEUWS ── */
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.news-card{background:var(--white);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:all .25s;cursor:pointer}
+.news-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.1);transform:translateY(-2px)}
+.news-img{height:160px;background:var(--gray2);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:48px}
+.news-body{padding:20px}
+.news-tag{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:8px;display:block}
+.news-body h3{font-family:'Source Serif 4',Georgia,serif;font-size:16px;color:var(--text);line-height:1.35;margin-bottom:10px}
+.news-body p{font-size:13px;color:var(--muted);line-height:1.6}
+.news-date{font-size:11.5px;color:var(--muted);margin-top:12px;display:block}
+
+/* ── TOOLS ── */
+.tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.tool-box{background:var(--gray1);border:1px solid var(--border);border-radius:10px;padding:30px}
+.new-badge{display:inline-block;background:var(--red);color:#fff;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:3px;margin-bottom:10px}
+.tool-box h3{font-family:'Source Serif 4',Georgia,serif;font-size:20px;color:var(--text);margin-bottom:7px}
+.tool-desc{font-size:13.5px;color:var(--muted);margin-bottom:20px;line-height:1.6}
+.sym-wrap{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+.stag{padding:6px 13px;border:1.5px solid var(--border);background:#fff;border-radius:20px;font-size:12.5px;font-weight:500;color:var(--text);cursor:pointer;transition:all .18s}
+.stag:hover,.stag.on{background:var(--red);border-color:var(--red);color:#fff}
+.sym-out{background:#fff;border-left:4px solid var(--red);padding:14px 16px;font-size:13px;color:var(--text);line-height:1.6;display:none;border-radius:0 5px 5px 0}
+.sym-out.show{display:block}
+.sym-out strong{color:var(--red)}
+.sym-out.urg{border-left-color:#c0392b}
+.sym-out.urg strong{color:#c0392b}
+.inh-tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:18px}
+.itab{padding:7px 15px;border:1.5px solid var(--border);background:#fff;border-radius:4px;font-size:12.5px;font-weight:600;color:var(--muted);cursor:pointer;transition:all .18s}
+.itab.on,.itab:hover{background:var(--red);border-color:var(--red);color:#fff}
+.inh-list{list-style:none}
+.inh-li{display:flex;gap:11px;padding:10px 0;border-bottom:1px solid var(--border)}
+.inh-li:last-child{border-bottom:none}
+.inh-n{width:25px;height:25px;border-radius:50%;background:var(--red);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.inh-li strong{font-size:13px;color:var(--text);display:block;margin-bottom:2px}
+.inh-li p{font-size:12px;color:var(--muted);line-height:1.5}
+
+/* ── CONTACT ── */
+.praktisch-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.praktisch-left h3{font-family:'Source Serif 4',Georgia,serif;font-size:22px;color:var(--text);margin-bottom:22px}
+.prow{display:flex;gap:13px;padding:14px 0;border-bottom:1px solid var(--border)}
+.prow:last-of-type{border-bottom:none}
+.pico{width:36px;height:36px;background:var(--red);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;color:#fff}
+.prow-txt strong{font-size:13.5px;font-weight:700;color:var(--text);display:block;margin-bottom:2px}
+.prow-txt p,.prow-txt a{font-size:13px;color:var(--muted);line-height:1.55}
+.prow-txt a{color:var(--red);text-decoration:none;font-weight:600}
+.prow-txt a:hover{text-decoration:underline}
+.contact-form-box{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:32px}
+.contact-form-box h3{font-family:'Source Serif 4',Georgia,serif;font-size:21px;color:var(--text);margin-bottom:22px}
+.form-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fg{margin-bottom:13px}
+.fg label{display:block;font-size:12.5px;font-weight:700;color:var(--text);margin-bottom:5px}
+.fg input,.fg select,.fg textarea{width:100%;padding:10px 13px;border:1.5px solid var(--border);border-radius:4px;font-size:13.5px;color:var(--text);background:var(--gray1);outline:none;transition:border-color .2s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--red);background:#fff}
+.fg textarea{min-height:80px;resize:vertical}
+.btn-submit{width:100%;padding:12px;background:var(--red);color:#fff;border:none;border-radius:4px;font-size:14.5px;font-weight:700;cursor:pointer;transition:background .2s}
+.btn-submit:hover{background:var(--red-d)}
+
+/* ── CTA BAND ── */
+.cta-band{background:var(--red);padding:48px;display:flex;align-items:center;justify-content:space-between;gap:32px}
+.cta-band h2{font-family:'Source Serif 4',Georgia,serif;font-size:26px;color:#fff;margin-bottom:6px}
+.cta-band p{color:rgba(255,255,255,.8);font-size:15px}
+.btn-white{background:#fff;color:var(--red);padding:12px 26px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;white-space:nowrap;transition:all .2s;flex-shrink:0;display:inline-flex;align-items:center;gap:7px}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.15)}
+
+/* ── HUISARTSEN ── */
+.ha-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.ha-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:24px;transition:all .2s;text-decoration:none;display:block}
+.ha-card:hover{background:rgba(255,255,255,.1)}
+.ha-card .ha-ico{font-size:28px;margin-bottom:12px;display:block}
+.ha-card h3{font-size:15px;font-weight:700;color:#fff;margin-bottom:7px}
+.ha-card p{font-size:13px;color:rgba(255,255,255,.6);line-height:1.65}
+.ha-card .ha-link{display:inline-flex;align-items:center;gap:5px;color:rgba(255,255,255,.8);font-size:12.5px;font-weight:700;margin-top:14px}
+
+/* ── FOOTER ── */
+.foot-stripe{height:5px;background:linear-gradient(to right,var(--red) 20%,var(--teal) 20%,var(--teal) 40%,var(--yellow) 40%,var(--yellow) 60%,var(--green) 60%,var(--green) 80%,var(--purple) 80%)}
+footer{background:#0F0F1A;color:rgba(255,255,255,.5);padding:52px 48px 28px}
+.foot-top{display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;gap:44px;margin-bottom:40px}
+.foot-logo{margin-bottom:14px;display:block}
+.foot-tagline{font-size:12.5px;color:rgba(255,255,255,.35);letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;display:block}
+.foot-brand p{font-size:13px;line-height:1.7;max-width:260px}
+.foot-col h4{color:#fff;font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;margin-bottom:16px}
+.foot-col a{display:block;color:rgba(255,255,255,.45);font-size:13px;text-decoration:none;margin-bottom:8px;transition:color .2s}
+.foot-col a:hover{color:#fff}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:22px;display:flex;justify-content:space-between;align-items:center;font-size:12px;flex-wrap:wrap;gap:10px}
+.foot-bottom a{color:rgba(255,255,255,.4);text-decoration:none;margin-left:14px}
+.foot-bottom a:hover{color:#fff}
+.foot-social{display:flex;gap:10px;margin-top:14px}
+.foot-social a{width:34px;height:34px;border-radius:6px;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;font-size:15px;text-decoration:none;transition:background .2s}
+.foot-social a:hover{background:var(--red)}
+
+/* ── REVEAL ── */
+.rev{opacity:0;transform:translateY(16px);transition:all .5s ease}
+.rev.vis{opacity:1;transform:none}
+
+/* ── MOBILE ── */
+@media(max-width:960px){
+  .topbar,nav,.bc,.sec,.cta-band,.foot-bottom{padding-left:20px;padding-right:20px}
+  .sec{padding-top:48px;padding-bottom:48px}
+  footer{padding:40px 20px 22px}
+  .hero{grid-template-columns:1fr}
+  .hero-img{display:none}
+  .hero-body{padding:44px 20px}
+  .statsbar{grid-template-columns:repeat(3,1fr)}
+  .qa-bar{grid-template-columns:repeat(2,1fr)}
+  .campus-grid,.cond-grid,.artsen-grid,.proc-grid,.klin-grid,.news-grid,.tools-grid,.ha-grid,.praktisch-grid{grid-template-columns:1fr}
+  .about-grid,.foot-top{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .cta-band{flex-direction:column;padding:32px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="tb-l">
+    <a href="https://www.azorg.be">← AZOrg Ziekenhuis</a>
+    <a href="https://www.azorg.be/nl/nieuws">Nieuws</a>
+    <a href="https://mynexuz.be" target="_blank">Patiëntenportaal (mynexuzhealth)</a>
+  </div>
+  <div>
+    <a href="https://www.azorg.be/nl/patient">Patiënt</a>
+    <a href="https://www.azorg.be/nl/professional">Professional</a>
+    <a href="https://www.azorg.be/nl/praktisch">Praktisch</a>
+    <a href="#" style="margin-left:14px;color:rgba(255,255,255,.9);font-weight:600">NL</a>
+    <a href="#" style="color:rgba(255,255,255,.3)">FR</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <a href="https://www.azorg.be" class="azorg-logo" title="AZOrg Ziekenhuis">
+      <span class="logo-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="height:38px;width:auto;display:block"><g><path fill="white" d="M26.3612,26.5322c0,1.5826,1.2,2.7537,2.8344,2.7537c0.7434,0,1.4495-0.2329,1.9367-0.6986v-2.0331H30.752v1.8699c-0.4412,0.3569-0.9691,0.4964-1.5411,0.4964c-1.4105,0-2.456-1.0318-2.456-2.3899s1.0455-2.39,2.456-2.39c0.6585,0,1.2236,0.1783,1.6955,0.6442l0.2479-0.2635c-0.4804-0.4964-1.1694-0.7447-1.9519-0.7447c-1.643,0-2.8429,1.1713-2.8429,2.7539 M21.349,24.1728h1.5497c1.1626,0,1.7821,0.5354,1.7821,1.4738s-0.6195,1.4738-1.7821,1.4738H21.349V24.1728z M22.8987,23.8159h-1.9452v5.431h0.3955v-1.7763h1.5497c0.185,0,0.3565-0.0154,0.5261-0.0392l1.2934,1.8155h0.4497l-1.3561-1.9004c0.8063-0.2398,1.2695-0.8381,1.2695-1.6982c0-1.1491-0.8213-1.8307-2.1844-1.8307 M14.0065,26.5322c0-1.3735,1.0387-2.3899,2.4254-2.3899c1.3867,0,2.417,1.0164,2.417,2.3899s-1.0387,2.39-2.417,2.39C15.0537,28.9221,14.0065,27.9057,14.0065,26.5322z M13.611,26.5322c0,1.5741,1.2,2.7537,2.8192,2.7537c1.6192,0,2.8192-1.1711,2.8192-2.7537c0-1.5826-1.2085-2.7537-2.8192-2.7537C14.8195,23.7785,13.611,24.9581,13.611,26.5322z M12.3669,24.1728L8.6261,28.968v0.2788h4.3688v-0.3571H9.176l3.7341-4.7951v-0.2788H8.6736v0.3569h3.695H12.3669z M3.2083,27.1305l1.032-2.0773l1.032,2.0773H3.2083z M3.5426,23.8192l-2.697,5.4293H2.156l0.5754-1.1593h3.0178l0.5754,1.1593h1.3103l-2.697-5.4293H3.5426z M26.782,4.8644h1.212l-4.4758,9.0074l-2.5579-5.1471c2.1369-0.5916,4.0327-1.8562,5.8216-3.862 M10.4201,10.0047L7.8657,4.8644h1.2119c0.8707,0.974,1.7652,1.7729,2.7004,2.407l0.168-0.34l0.3157,0.2074c1.7143,1.0879,3.5694,1.6063,5.6673,1.6063c0.8673,0,1.6939-0.0901,2.4866-0.272l0.3785-0.0816l0.1663,0.3332l0.0034,0.0085l-0.3751,0.0867c-0.1035,0.0255-0.2088,0.0476-0.314,0.0697c0.1052-0.0221,0.2088-0.0442,0.3123-0.0697c-0.8453,0.2006-1.7279,0.3009-2.658,0.3009c-2.1369,0-4.0294-0.5202-5.7759-1.6063c-0.0204-0.0119-0.039-0.0238-0.0594-0.0357l-0.3174-0.204l-1.3527,2.7231l3.0976,6.2486c0.7926-0.1819,1.6175-0.272,2.4866-0.272c2.0962,0,3.953,0.5202,5.6673,1.6063l0.0033-0.0051v0.0051l1.8417-3.7056l0.2088,0.4199l-1.7364,3.4949l-0.3158-0.2074l-1.0217,2.0568c-0.1001,0.2006-0.2122,0.4029-0.3276,0.5847l-0.0051,0.0085c-0.4854,0.8652-1.402,1.4024-2.3915,1.4024c-0.9895,0-1.901-0.5337-2.3847-1.3905l-0.0051-0.0085c-0.1188-0.1904-0.2325-0.391-0.3344-0.5966l-1.6854-3.3912L13.1477,16.34l-2.938-5.912l-4.8729,9.8046h1.9841l0.112-0.1258c1.7567-1.9684,3.617-3.2008,5.7148-3.7668l1.7227,3.466c0.1069,0.2159,0.2241,0.425,0.3496,0.6255c0.5499,0.974,1.587,1.5774,2.7089,1.5774c1.1219,0,2.1624-0.6085,2.7157-1.5893c0.1222-0.1938,0.2376-0.3995,0.3428-0.6136l1.0015-2.0143c0.896,0.6102,1.7549,1.3803,2.5917,2.3151l0.1119,0.1258h1.9843l-2.9501-5.9375L28.6,4.4904h-1.9843l-0.1119,0.1258c-1.7568,1.9684-3.6171,3.2008-5.7149,3.7668l-1.7228-3.4659c-0.1052-0.2142-0.2223-0.4199-0.3428-0.6136c-0.5533-0.9808-1.5921-1.5893-2.7157-1.5893c-1.1236,0-2.159,0.6051-2.7089,1.5774c-0.1256,0.2006-0.2427,0.4097-0.3496,0.6255l-1.0014,2.016c-0.8962-0.6102-1.755-1.3803-2.5901-2.3152l-0.112-0.1258H7.2614l2.9499,5.9375l0.2088-0.4216V10.0047z"/></g></svg>
+      </span>
+    </a>
+    <div class="nav-divider"></div>
+    <div class="nav-service">Pneumologie<small>Longziekten</small></div>
+  </div>
+  <div class="nav-links">
+    <a href="#over" class="nl">Over de dienst</a>
+    <a href="#campussen" class="nl">Campussen</a>
+    <a href="#artsen" class="nl">Artsen</a>
+    <a href="#ziektebeelden" class="nl">Aandoeningen</a>
+    <a href="#klinieken" class="nl">Klinieken</a>
+    <a href="#huisartsen" class="nl">Huisartsen</a>
+    <a href="#contact" class="nl">Contact</a>
+  </div>
+  <a href="https://mynexuz.be/afspraken/maak-afspraak?ziekenhuisCode=OLVA&medischeDienst=3012" class="nav-cta" target="_blank">📅 Online afspraak</a>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="bc">
+  <a href="https://www.azorg.be">AZOrg</a><span>›</span>
+  <a href="https://www.azorg.be/nl/onze-medische-diensten">Onze medische diensten</a><span>›</span>
+  Pneumologie / Longziekten
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-body">
+    <div class="svc-badge">Dienst Pneumologie — Longziekten</div>
+    <h1>Zorg van A tot Z<br>voor uw <span class="hi">longen</span></h1>
+    <p class="hero-intro">De dienst Pneumologie van AZOrg onderzoekt en behandelt alle aandoeningen van de longen en de luchtwegen. Een team van 15 gespecialiseerde longartsen, verspreid over 6 campussen, staat voor u klaar.</p>
+    <div class="hero-btns">
+      <a href="https://mynexuz.be/afspraken/maak-afspraak?ziekenhuisCode=OLVA&medischeDienst=3012" class="btn btn-red" target="_blank">📅 Online afspraak</a>
+      <a href="#campussen" class="btn btn-ghost">Secretariaten &amp; campussen</a>
+    </div>
+    <div class="hero-campussen">
+      <p>Actief op</p>
+      <span class="campus-pill">Aalst Moorselbaan</span>
+      <span class="campus-pill">Aalst Merestraat</span>
+      <span class="campus-pill">Asse</span>
+      <span class="campus-pill">Geraardsbergen</span>
+      <span class="campus-pill">Ninove</span>
+      <span class="campus-pill">Wetteren</span>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=800&q=80" alt="Pneumologie AZOrg" loading="lazy">
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="statsbar">
+  <div class="stbl"><strong>15</strong><span>Longartsen</span></div>
+  <div class="stbl"><strong>6</strong><span>Campussen</span></div>
+  <div class="stbl"><strong>950K</strong><span>Consultaties/jaar</span></div>
+  <div class="stbl"><strong>5.000+</strong><span>AZOrg medewerkers</span></div>
+  <div class="stbl"><strong>500+</strong><span>Arts-specialisten</span></div>
+</div>
+
+<!-- QUICK ACCESS -->
+<div class="qa-bar">
+  <a class="qa-item" href="tel:053724289">
+    <div class="qa-ico">📞</div>
+    <div class="qa-txt"><strong>Secretariaat bellen</strong><span>Aalst Moorselbaan: 053 72 42 89</span></div>
+  </a>
+  <a class="qa-item" href="https://mynexuz.be/afspraken/maak-afspraak?ziekenhuisCode=OLVA&medischeDienst=3012" target="_blank">
+    <div class="qa-ico">🖥️</div>
+    <div class="qa-txt"><strong>Online afspraak</strong><span>via mynexuzhealth</span></div>
+  </a>
+  <a class="qa-item" href="#aandoeningen">
+    <div class="qa-ico">🫁</div>
+    <div class="qa-txt"><strong>Aandoeningen</strong><span>Longaandoeningen &amp; ziektebeelden</span></div>
+  </a>
+  <a class="qa-item" href="https://mynexuz.be" target="_blank">
+    <div class="qa-ico">📁</div>
+    <div class="qa-txt"><strong>Mijn dossier</strong><span>mynexuzhealth portaal</span></div>
+  </a>
+</div>
+
+<!-- OVER DE DIENST -->
+<section class="sec" id="over">
+  <div class="about-grid rev">
+    <div class="about-text">
+      <div class="lbl">Over de dienst</div>
+      <h2 class="st">Pneumologie bij AZOrg</h2>
+      <p>De dienst Pneumologie onderzoekt en behandelt aandoeningen van de longen en de luchtwegen. Vaak voorkomende voorbeelden zijn <strong>astma, allergie, chronische hoest, chronische bronchitis</strong> en infecties van de luchtwegen en de longen. Slaapapneu behoort ook tot het domein van de dienst longziekten.</p>
+      <p>Longembolie, longfibrose en longkanker zijn andere aandoeningen die door de dienst Pneumologie worden behandeld. <strong>Verschillende longaandoeningen worden multidisciplinair benaderd</strong> waarbij specialisten zoals thoraxchirurgen, bestralingsartsen, hartspecialisten, medisch oncologen en anatoom-pathologen bij het patiëntenoverleg worden betrokken.</p>
+      <p>Daarnaast worden ook verpleegkundigen, psychologen en kinesisten ingeschakeld voor het aanbieden van geïntegreerde zorg. Het longartsenteam staat garant voor topzorg, waarbij naast de dagelijkse klinische activiteit ook actief wordt meegewerkt aan <strong>wetenschappelijk onderzoek</strong> en de opleiding van jonge longartsen-in-opleiding. De dienst werkt nauw samen met <a href="https://www.komoptegenkanker.be/" style="color:var(--red);font-weight:600" target="_blank">Kom Op Tegen Kanker</a> voor ondersteuning van patiënten met longkanker.</p>
+    </div>
+    <div class="about-aside">
+      <div class="info-box">
+        <h4>Wat behandelen wij?</h4>
+        <ul>
+          <li>Astma, allergie en luchtweginfecties</li>
+          <li>COPD en chronische bronchitis</li>
+          <li>Longkanker (multidisciplinair MOC)</li>
+          <li>Slaapapneu en slaapstoornissen</li>
+          <li>Longembolie en longfibrose</li>
+          <li>Sarcoïdose en interstitiële longziekten</li>
+          <li>Klaplong (pneumothorax)</li>
+          <li>Pleurale aandoeningen</li>
+        </ul>
+      </div>
+      <div class="partners-box">
+        <h4>Multidisciplinaire samenwerking met</h4>
+        <span class="partner-tag">Thoraxchirurgie</span>
+        <span class="partner-tag">Radiologie</span>
+        <span class="partner-tag">Oncologie</span>
+        <span class="partner-tag">Radiotherapie</span>
+        <span class="partner-tag">Cardiologie</span>
+        <span class="partner-tag">Pathologische Anatomie</span>
+        <span class="partner-tag">Intensieve Zorgen</span>
+        <span class="partner-tag">Kinesitherapie</span>
+        <span class="partner-tag">Psychologie</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPUSSEN SECRETARIAAT -->
+<section class="sec sec-gray" id="campussen">
+  <div class="lbl">Secretariaat per campus</div>
+  <h2 class="st">Contacteer ons op uw dichtstbijzijnde campus</h2>
+  <p class="sd">Maak een afspraak via telefoon, e-mail of online via mynexuzhealth. Alle campussen zijn bereikbaar van maandag tot en met vrijdag.</p>
+  <div class="campus-grid rev">
+
+    <div class="campus-card">
+      <div class="cc-head">
+        <div class="cc-head-ico">🏥</div>
+        <div class="cc-head-txt"><strong>Aalst — Moorselbaan</strong><span>Hoofdcampus Pneumologie</span></div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-row"><div class="cc-ico">📞</div><div><a href="tel:053724289">053 72 42 89</a><p>Ma–Vr: 08:00–17:00</p></div></div>
+        <div class="cc-row"><div class="cc-ico">✉️</div><div><a href="mailto:pneumologie.aalst@azorg.be">pneumologie.aalst@azorg.be</a></div></div>
+        <div class="cc-row"><div class="cc-ico">📍</div><div><p>Moorselbaan 164, 9300 Aalst</p></div></div>
+        <div class="cc-artsen"><span>Longartsen op deze campus</span>
+          <div class="arts-chips">
+            <span class="arts-chip">Dr. V. Adam</span><span class="arts-chip">Dr. B.J. Berendes</span><span class="arts-chip">Dr. E. Hardeman</span><span class="arts-chip">Dr. E. Munghen</span><span class="arts-chip">Dr. I. Muylle</span><span class="arts-chip">Dr. H. Nguyen</span><span class="arts-chip">Dr. D. Stylemans</span><span class="arts-chip">Dr. K. Tournoy</span><span class="arts-chip">Dr. R. Van Herreweghe</span><span class="arts-chip">Dr. P. Vercauter</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="campus-card">
+      <div class="cc-head teal">
+        <div class="cc-head-ico">🏥</div>
+        <div class="cc-head-txt"><strong>Aalst — Merestraat</strong><span>Campus ASZ</span></div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-row"><div class="cc-ico">📞</div><div><a href="tel:053766710">053 76 67 10</a><p>Ma–Vr: 08:00–17:00</p></div></div>
+        <div class="cc-row"><div class="cc-ico">✉️</div><div><a href="mailto:pneumologie.merestraat@azorg.be">pneumologie.merestraat@azorg.be</a></div></div>
+        <div class="cc-row"><div class="cc-ico">📍</div><div><p>Merestraat 80, 9300 Aalst</p></div></div>
+        <div class="cc-artsen"><span>Longartsen op deze campus</span>
+          <div class="arts-chips">
+            <span class="arts-chip">Dr. A. De Paepe</span><span class="arts-chip">Dr. A. Pletinckx</span><span class="arts-chip">Dr. B. Rombaut</span><span class="arts-chip">Dr. R. Van Herreweghe</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="campus-card">
+      <div class="cc-head green">
+        <div class="cc-head-ico">🏥</div>
+        <div class="cc-head-txt"><strong>Asse</strong><span>Campus Asse</span></div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-row"><div class="cc-ico">📞</div><div><a href="tel:023006336">02 300 63 36</a><p>Ma–Vr: 08:00–16:30</p></div></div>
+        <div class="cc-row"><div class="cc-ico">✉️</div><div><a href="mailto:pneumologie.asse@azorg.be">pneumologie.asse@azorg.be</a></div></div>
+        <div class="cc-row"><div class="cc-ico">📍</div><div><p>Bloklaan 5, 1730 Asse</p></div></div>
+        <div class="cc-row"><div class="cc-ico">ℹ️</div><div><p>Gezamenlijke consultatie Pneumologie/NKO beschikbaar</p></div></div>
+        <div class="cc-artsen"><span>Longartsen op deze campus</span>
+          <div class="arts-chips">
+            <span class="arts-chip">Dr. B.J. Berendes</span><span class="arts-chip">Dr. E. Hardeman</span><span class="arts-chip">Dr. I. Muylle</span><span class="arts-chip">Dr. A. Pletinckx</span><span class="arts-chip">Dr. P. Vercauter</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="campus-card">
+      <div class="cc-head yellow">
+        <div class="cc-head-ico">🏥</div>
+        <div class="cc-head-txt"><strong>Geraardsbergen</strong><span>Campus Geraardsbergen</span></div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-row"><div class="cc-ico">📞</div><div><a href="tel:054432182">054 43 21 82</a><p>Ma–Vr: 08:00–16:30</p></div></div>
+        <div class="cc-row"><div class="cc-ico">📍</div><div><p>Gasthuisstraat 4, 9500 Geraardsbergen</p></div></div>
+        <div class="cc-artsen"><span>Longartsen op deze campus</span>
+          <div class="arts-chips">
+            <span class="arts-chip">Dr. V. Adam</span><span class="arts-chip">Dr. B. De Saedeleer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="campus-card">
+      <div class="cc-head purple">
+        <div class="cc-head-ico">🏥</div>
+        <div class="cc-head-txt"><strong>Ninove</strong><span>Campus Ninove</span></div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-row"><div class="cc-ico">📞</div><div><a href="tel:054312027">054 31 20 27</a><p>Ma–Vr: 08:00–16:30</p></div></div>
+        <div class="cc-row"><div class="cc-ico">✉️</div><div><a href="mailto:pneumologie.ninove@azorg.be">pneumologie.ninove@azorg.be</a></div></div>
+        <div class="cc-row"><div class="cc-ico">📍</div><div><p>Biezenstraat 2, 9400 Ninove</p></div></div>
+        <div class="cc-artsen"><span>Longartsen op deze campus</span>
+          <div class="arts-chips">
+            <span class="arts-chip">Dr. H. Nguyen</span><span class="arts-chip">Dr. D. Stylemans</span><span class="arts-chip">Dr. K. Tournoy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="campus-card">
+      <div class="cc-head dark">
+        <div class="cc-head-ico">🏥</div>
+        <div class="cc-head-txt"><strong>Wetteren</strong><span>Campus Wetteren</span></div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-row"><div class="cc-ico">📞</div><div><a href="tel:093688211">09 368 82 11</a><p>Ma–Vr: 08:00–16:30</p></div></div>
+        <div class="cc-row"><div class="cc-ico">✉️</div><div><a href="mailto:pneumologie.wetteren@azorg.be">pneumologie.wetteren@azorg.be</a></div></div>
+        <div class="cc-row"><div class="cc-ico">📍</div><div><p>Wegvoeringstraat 73, 9230 Wetteren</p></div></div>
+        <div class="cc-artsen"><span>Longartsen op deze campus</span>
+          <div class="arts-chips">
+            <span class="arts-chip">Dr. A. Pletinckx</span><span class="arts-chip">Dr. B. Rombaut</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ARTSEN — alfabetisch op familienaam -->
+<section class="sec" id="artsen">
+  <div class="lbl">Ons team</div>
+  <h2 class="st">Gespecialiseerde longartsen</h2>
+  <p class="sd">Alle longartsen zijn geconventioneerd. Elk heeft een brede basisexpertise in longziekten aangevuld met een of meerdere deelspecialisaties. Klik op de foto om het profiel op azorg.be te bekijken.</p>
+  <div class="artsen-grid rev">
+
+    <!-- Adam, Valerie -->
+    <div class="arts-card">
+      <div class="arts-top" style="background:var(--teal)"></div>
+      <div class="arts-body">
+        <a class="arts-av" href="https://www.azorg.be/nl/onze-artsen/dr-valerie-adam" target="_blank" title="Profiel Dr. Valerie Adam op azorg.be">👩‍⚕️</a>
+        <h3>Dr. Valerie Adam</h3>
+        <p class="arts-titel">Longarts</p>
+        <span class="arts-sp">Slaapkliniek</span>
+        <div class="conv-badge">✓ Geconventioneerd</div>
+        <div class="arts-campussen"><span class="arts-camp">Aalst Moorselbaan</span><span class="arts-camp">Geraardsbergen</span></div>
+        <a class="arts-foto-link" href="https://www.azorg.be/nl/onze-artsen/dr-valerie-adam" target="_blank">🔗 Profiel &amp; foto op azorg.be</a>
+      </div>
+    </div>
+
+    <!-- Berendes, Berend-Jan -->
+    <div class="arts-card">
+      <div class="arts-top" style="background:var(--purple)"></div>
+      <div class="arts-body">
+        <a class="arts-av" href="https://www.azorg.be/nl/onze-artsen/dr-berend-jan-berendes" target="_blank" title="Profiel Dr. Berend-Jan Berendes op azorg.be">👨‍⚕️</a>
+        <h3>Dr. Berend-Jan Berendes</h3>
+        <p class="arts-titel">Longarts</p>
+        <span class="arts-sp">Longkanker</span>
+        <div class="conv-badge">✓ Geconventioneerd</div>
+        <div class="arts-campussen"><span class="arts-camp">Aalst Moorselbaan</span><span class="arts-camp">Asse</span></div>
+        <a class="arts-foto-link" href="https://www.azorg.be/nl/onze-artsen/dr-berend-jan-berendes" target="_blank">🔗 Profiel &amp; foto op azorg.be</a>
+      </div>
+    </div>
+
+    <!-- De Paepe, Annelies -->
+    <div class="arts-card">
+      <div class="arts-top" style="background:var(--red)"></div>
+      <div class="arts-body">
+        <a class="arts-av" href="https://www.azorg.be/nl/onze-artsen/dr-annelies-de-paepe" target="_blank" title="Profiel Dr. Annelies De Paepe op azorg.be">
+          <img src="https://www.azorg.be/sites/default/files/styles/teaser_large/public/2025-04/Annelies%20De%20Paepe.jpg" alt="Dr. Annelies De Paepe" onerror="this.parentElement.innerHTML='👩‍⚕️'">
+        </a>
+        <h3>Dr. Annelies De Paepe</h3>
+        <p class="arts-titel">Pneumoloog-oncoloog (erkend)</p>
+        <span class="arts-sp">Respiratoire oncologie</span>
+        <div class="conv-badge">✓ Geconventioneerd</div>
+        <div class="arts-campussen"><span class="arts-camp">Aalst Moorselbaan</span><span class="arts-camp">Aalst Merestraat</span></div>
+        <a class="arts-foto-link" href="https://www.azorg.be/nl/onze-artsen/dr-annelies-de-paepe" target="_blank">🔗 Profiel &amp; foto op azorg.be</a>
+      </div>
+    </div>
+
+    <!-- De Saedeleer, Bart -->
+    <div class="arts-card">
+      <div class="arts-top" style="background:var(--yellow)"></div>
+      <div class="arts-body">
+        <a class="arts-av" href="https://www.azorg.be/nl/onze-artsen/dr-bart-de-saedeleer" target="_blank" title="Profiel Dr. Bart De Saedeleer op azorg.be">
+          <img src="https://www.azorg.be/sites/default/files/styles/teaser_large/public/2025-06/2025_AZORG_24juni-25.jpg" alt="Dr. Bart De Saedeleer" onerror="this.parentElement.innerHTML='👨‍⚕️'">
+        </a>
+        <h3>Dr. Bart De Saedeleer</h3>
+        <p class="arts-titel">Longarts</p>
+        <span class="arts-sp">Infectiologie</span>
+        <div class="conv-badge">✓ Geconventioneerd</div>
+        <div class="arts-campussen"><span class="arts-camp">Geraardsbergen</span></div>
+        <a class="arts-foto-link" href="https://www.azorg.be/nl/onze-artsen/dr-bart-de-saedeleer" target="_blank">🔗 Profiel &amp; foto op azorg.be</a>
+      </div>
+    </div>
+
+    <!-- Hardeman, Elke -->
+    <div class="arts-card">
+      <div class="arts-top" style="background:var(--green)"></div>
+      <div class="arts-body">
+        <a class="arts-av" href="https://www.azorg.be/nl/onze-artsen/dr-elke-hardeman" target="_blank" title="Profiel Dr. Elke Hardeman op azorg.be">
+          <img src="https://www.azorg.be/sites/default/files/styles/teaser_large/public/2025-05/Elke%20Hardeman.jpg" alt="Dr. Elke Hardeman" onerror="this.parentElement.innerHTML='👩‍⚕️'">
+        </a>
+        <h3>Dr. Elke Hardeman</h3>
+        <p class="arts-titel">Longarts</p>
+        <span class="arts-sp">Interstitiële longziekten</span>
+        <div class="conv-badge">✓ Geconventioneerd</div>
+        <div class="arts-campussen"><span class="arts-camp">Aalst Moorselbaan</span><span class="arts-camp">Asse</span></div>
+        <a class="arts-foto-link" href="https://www.azorg.be/nl/onze-artsen/dr-elke-hardeman" target="_blank">🔗 Profiel &amp; foto op azorg.be</a>
+      </div>
+    </div>
+
+    <!-- Munghen, Evert -->
+    <div class="arts-card">
+      <div class="arts-top" style="background:var(--teal)"></div>
+      <div class="arts-body">
+        <a class="arts-av" href="https://www.azorg.be/nl/onze-artsen/dr-evert-munghen" target="_blank" title="Profiel Dr. Evert Munghen op azorg.be">👨‍⚕️</a>
+        <h3>Dr. Evert Munghen</h3>
+        <p class="arts-titel">Longarts</p>
+        <span class="arts-sp">Allergie &amp; Astma</span>
+        <div class="conv-badge">✓ Geconventioneerd</div>
+        <div class="arts-campussen"><span class="arts-camp">Aalst Moorselbaan</span></div>
+        <a class="arts-foto-link" href="https://www.azorg.be/nl/onze-artsen/dr-evert-munghen" target="_blank">🔗 Profiel &amp; foto op azorg.be</a>
+      </div>
+    </div>
+
+    <!-- Muylle, Inge -->
+    <div class="arts-card">
+      <div class="arts-top" style="background:var(--purple)"></div>
+      <div class="arts-body">
+        <a class="arts-av" href="https://www.azorg.be/nl/onze-artsen/dr-inge-muylle" target="_blank" title="Profiel Dr. Inge Muylle op azorg.be">👩‍⚕️</a>
+        <h3>Dr. Inge Muylle</h3>
+        <p class="arts-titel">Longarts</p>
+        <span class="arts-sp">COPD &amp; Infectiologie</span>
+        <div class="conv-badge">✓ Geconventioneerd</div>
+        <div class="arts-campussen"><span class="arts-camp">Aalst Moorselbaan</span><span class="arts-camp">Asse</span></div>
+        <a class="arts-foto-link" href="https://www.azorg.be/nl/onze-artsen/dr-inge-muylle" target="_blank">🔗 Profiel &amp; foto op azorg.be</a>
+      </div>
+    </div>
+
+    <!-- Nguyen, Hong -->
+    <div class="arts-card">
+      <div class="arts-top" style="background:var(--red)"></div>
+      <div class="arts-body">
+        <a class="arts-av" href="https://www.azorg.be/nl/onze-artsen/dr-hong-nguyen" target="_blank" title="Profiel Dr. Hong Nguyen op azorg.be">
+          <img src="https://www.azorg.be/sites/default/files/styles/teaser_large/public/2025-05/Hong%20Nguyen.jpg" alt="Dr. Hong Nguyen" onerror="this.parentElement.innerHTML='👩‍⚕️'">
+        </a>
+        <h3>Dr. Hong Nguyen</h3>
+        <p class="arts-titel">Longarts</p>
+        <span class="arts-sp">Slaapkliniek &amp; Sportkliniek</span>
+        <div class="conv-badge">✓ Geconventioneerd</div>
+        <div class="arts-campussen"><span class="arts-camp">Aalst Moorselbaan</span><span class="arts-camp">Ninove</span></div>
+        <a class="arts-foto-link" href="https://www.azorg.be/nl/onze-artsen/dr-hong-nguyen" target="_blank">🔗 Profiel &amp; foto op azorg.be</a>
+      </div>
+    </div>
+
+    <!-- Pletinckx, An -->
+    <div class="arts-card">
+      <div class="arts-top" style="background:var(--green)"></div>
+      <div class="arts-body">
+        <a class="arts-av" href="https://www.azorg.be/nl/onze-artsen/dr-an-pletinckx" target="_blank" title="Profiel Dr. An Pletinckx op azorg.be">
+          <img src="https://www.azorg.be/sites/default/files/styles/teaser_large/public/2025-04/An%20Pletinckx.jpg" alt="Dr. An Pletinckx" onerror="this.parentElement.innerHTML='👩‍⚕️'">
+        </a>
+        <h3>Dr. An Pletinckx</h3>
+        <p class="arts-titel">Pneumoloog</p>
+        <span class="arts-sp">Longrevalidatie</span>
+        <div class="conv-badge">✓ Geconventioneerd</div>
+        <div class="arts-campussen"><span class="arts-camp">Asse</span><span class="arts-camp">Aalst Merestraat</span><span class="arts-camp">Wetteren</span></div>
+        <a class="arts-foto-link" href="https://www.azorg.be/nl/onze-artsen/dr-an-pletinckx" target="_blank">🔗 Profiel &amp; foto op azorg.be</a>
+      </div>
+    </div>
+
+    <!-- Rombaut, Bart -->
+    <div class="arts-card">
+      <div class="arts-top" style="background:var(--yellow)"></div>
+      <div class="arts-body">
+        <a class="arts-av" href="https://www.azorg.be/nl/onze-artsen/dr-bart-rombaut" target="_blank" title="Profiel Dr. Bart Rombaut op azorg.be">
+          <img src="https://www.azorg.be/sites/default/files/styles/teaser_large/public/2025-04/Bart%20Rombaut.jpg" alt="Dr. Bart Rombaut" onerror="this.parentElement.innerHTML='👨‍⚕️'">
+        </a>
+        <h3>Dr. Bart Rombaut</h3>
+        <p class="arts-titel">Pneumoloog</p>
+        <span class="arts-sp">Longembolie &amp; Trombose</span>
+        <div class="conv-badge">✓ Geconventioneerd</div>
+        <div class="arts-campussen"><span class="arts-camp">Aalst Merestraat</span><span class="arts-camp">Wetteren</span></div>
+        <a class="arts-foto-link" href="https://www.azorg.be/nl/onze-artsen/dr-bart-rombaut" target="_blank">🔗 Profiel &amp; foto op azorg.be</a>
+      </div>
+    </div>
+
+    <!-- Stylemans, Dimitri -->
+    <div class="arts-card">
+      <div class="arts-top" style="background:var(--teal)"></div>
+      <div class="arts-body">
+        <a class="arts-av" href="https://www.azorg.be/nl/onze-artsen/dr-dimitri-stylemans" target="_blank" title="Profiel Dr. Dimitri Stylemans op azorg.be">
+          <img src="https://www.azorg.be/sites/default/files/styles/teaser_large/public/2025-04/Dimitri%20Stylemans.jpg" alt="Dr. Dimitri Stylemans" onerror="this.parentElement.innerHTML='👨‍⚕️'">
+        </a>
+        <h3>Dr. Dimitri Stylemans</h3>
+        <p class="arts-titel">Pneumoloog</p>
+        <span class="arts-sp">Slaapapneu</span>
+        <div class="conv-badge">✓ Geconventioneerd</div>
+        <div class="arts-campussen"><span class="arts-camp">Aalst Moorselbaan</span><span class="arts-camp">Ninove</span></div>
+        <a class="arts-foto-link" href="https://www.azorg.be/nl/onze-artsen/dr-dimitri-stylemans" target="_blank">🔗 Profiel &amp; foto op azorg.be</a>
+      </div>
+    </div>
+
+    <!-- Tournoy, Kurt -->
+    <div class="arts-card">
+      <div class="arts-top" style="background:var(--red)"></div>
+      <div class="arts-body">
+        <a class="arts-av" href="https://www.azorg.be/nl/onze-artsen/dr-kurt-tournoy" target="_blank" title="Profiel Prof. Dr. Kurt Tournoy op azorg.be">
+          <img src="https://www.azorg.be/sites/default/files/styles/teaser_large/public/2020-04/003_20120918_141131_pds_mg_4007.jpg" alt="Prof. Dr. Kurt Tournoy" onerror="this.parentElement.innerHTML='👨‍⚕️'">
+        </a>
+        <h3>Prof. Dr. Kurt Tournoy</h3>
+        <p class="arts-titel">Longarts — Diensthoofd</p>
+        <span class="arts-sp">Interventionele longziekten</span>
+        <div class="conv-badge">✓ Geconventioneerd</div>
+        <div class="arts-campussen"><span class="arts-camp">Aalst Moorselbaan</span><span class="arts-camp">Ninove</span></div>
+        <a class="arts-foto-link" href="https://www.azorg.be/nl/onze-artsen/dr-kurt-tournoy" target="_blank">🔗 Profiel &amp; foto op azorg.be</a>
+      </div>
+    </div>
+
+    <!-- Van Herreweghe, Rika -->
+    <div class="arts-card">
+      <div class="arts-top" style="background:var(--red)"></div>
+      <div class="arts-body">
+        <a class="arts-av" href="https://www.azorg.be/nl/onze-artsen/dr-rika-van-herreweghe" target="_blank" title="Profiel Dr. Rika Van Herreweghe op azorg.be">
+          <img src="https://www.azorg.be/sites/default/files/styles/teaser_large/public/2025-05/Rika%20Van%20Herreweghe.jpg" alt="Dr. Rika Van Herreweghe" onerror="this.parentElement.innerHTML='👩‍⚕️'">
+        </a>
+        <h3>Dr. Rika Van Herreweghe</h3>
+        <p class="arts-titel">Pneumoloog-oncoloog (erkend)</p>
+        <span class="arts-sp">Longkanker MOC</span>
+        <div class="conv-badge">✓ Geconventioneerd</div>
+        <div class="arts-campussen"><span class="arts-camp">Aalst Moorselbaan</span><span class="arts-camp">Aalst Merestraat</span></div>
+        <a class="arts-foto-link" href="https://www.azorg.be/nl/onze-artsen/dr-rika-van-herreweghe" target="_blank">🔗 Profiel &amp; foto op azorg.be</a>
+      </div>
+    </div>
+
+    <!-- Vercauter, Piet -->
+    <div class="arts-card">
+      <div class="arts-top" style="background:var(--purple)"></div>
+      <div class="arts-body">
+        <a class="arts-av" href="https://www.azorg.be/nl/onze-artsen/dr-piet-vercauter" target="_blank" title="Profiel Dr. Piet Vercauter op azorg.be">
+          <img src="https://www.azorg.be/sites/default/files/styles/teaser_large/public/2025-05/Piet%20Vercauter.jpg" alt="Dr. Piet Vercauter" onerror="this.parentElement.innerHTML='👨‍⚕️'">
+        </a>
+        <h3>Dr. Piet Vercauter</h3>
+        <p class="arts-titel">Longarts</p>
+        <span class="arts-sp">COPD &amp; Astma</span>
+        <div class="conv-badge">✓ Geconventioneerd</div>
+        <div class="arts-campussen"><span class="arts-camp">Aalst Moorselbaan</span><span class="arts-camp">Asse</span></div>
+        <a class="arts-foto-link" href="https://www.azorg.be/nl/onze-artsen/dr-piet-vercauter" target="_blank">🔗 Profiel &amp; foto op azorg.be</a>
+      </div>
+    </div>
+
+  </div>
+  <div style="text-align:center;margin-top:28px">
+    <a href="https://www.azorg.be/nl/onze-artsen" class="btn btn-ghost" target="_blank">Bekijk alle artsen op azorg.be →</a>
+  </div>
+</section>
+
+<!-- ZIEKTEBEELDEN -->
+<section class="sec sec-gray" id="ziektebeelden">
+  <div class="lbl">Longaandoeningen</div>
+  <h2 class="st">Aandoeningen die wij behandelen</h2>
+  <p class="sd">Meer informatie over elk ziektebeeld vindt u op <a href="https://www.azorg.be/nl/longziekten" style="color:var(--red);font-weight:600" target="_blank">azorg.be/longziekten</a>.</p>
+  <div class="cond-grid rev" id="aandoeningen">
+    <a class="cond" href="https://www.azorg.be/nl/astma" target="_blank"><div class="cond-bar" style="background:var(--red)"></div><h3>🌬️ Astma</h3><p>Chronische ontstekingsziekte van de luchtwegen met aanvallen van kortademigheid, piepende ademhaling en hoest.</p><span class="cond-more">Meer info →</span></a>
+    <a class="cond" href="https://www.azorg.be/nl/longziekten" target="_blank"><div class="cond-bar" style="background:var(--green)"></div><h3>🌿 Allergie</h3><p>Overgevoeligheidsreacties op allergenen zoals pollen, huisstofmijt of dieren. Diagnose via huidtesten, behandeling via antihistaminica of immunotherapie.</p><span class="cond-more">Meer info →</span></a>
+    <a class="cond" href="https://www.azorg.be/nl/copd" target="_blank"><div class="cond-bar" style="background:var(--green)"></div><h3>🫁 COPD</h3><p>Chronisch obstructief longlijden door langdurige luchtwegontsteking, meist door roken. Behandeling via bronchusverwijders, revalidatie en rookstop.</p><span class="cond-more">Meer info →</span></a>
+    <a class="cond" href="https://www.azorg.be/nl/longziekten" target="_blank"><div class="cond-bar" style="background:var(--yellow)"></div><h3>🦠 Longontsteking (pneumonie)</h3><p>Infectie van het longweefsel door bacteriën, virussen of schimmels. Behandeling via gerichte antibiotica op basis van verwekker en ernst.</p><span class="cond-more">Meer info →</span></a>
+    <a class="cond" href="https://www.azorg.be/nl/longziekten" target="_blank"><div class="cond-bar" style="background:var(--purple)"></div><h3>💨 Klaplong (pneumothorax)</h3><p>Spontane of traumatische longcollaps waarbij lucht in de pleurale ruimte komt. Behandeling via thoraxdrainage of kijkoperatie.</p><span class="cond-more">Meer info →</span></a>
+    <a class="cond" href="https://www.azorg.be/nl/longziekten" target="_blank"><div class="cond-bar" style="background:var(--red)"></div><h3>🩸 Longembolie</h3><p>Bloedklonter in de longslagaderen, vaak afkomstig van diepe veneuze trombose. Snelle diagnose via CT-angiografie en behandeling met antistolling.</p><span class="cond-more">Meer info →</span></a>
+    <a class="cond" href="https://www.azorg.be/nl/longziekten" target="_blank"><div class="cond-bar" style="background:var(--teal)"></div><h3>🔬 Longkanker</h3><p>Kwaadaardige tumor van het longweefsel. Multidisciplinaire aanpak via wekelijks MOC-overleg met thoraxchirurgen, oncologen en radiologen.</p><span class="cond-more">Meer info →</span></a>
+    <a class="cond" href="https://www.azorg.be/nl/longziekten" target="_blank"><div class="cond-bar" style="background:var(--yellow)"></div><h3>🔵 Sarcoïdose</h3><p>Granulomateuze ziekte die de longen, klieren en andere organen kan aantasten. Diagnose via bronchoscopie of EBUS, behandeling met corticosteroïden.</p><span class="cond-more">Meer info →</span></a>
+    <a class="cond" href="https://www.azorg.be/nl/slaaplabo" target="_blank"><div class="cond-bar" style="background:var(--purple)"></div><h3>😴 Slaapapneu (OSAS)</h3><p>Herhaaldelijke ademstops tijdens het slapen door obstructie van de bovenste luchtwegen. Behandeling via CPAP, MRA of hypoglossal nerve stimulation.</p><span class="cond-more">Meer info →</span></a>
+    <a class="cond" href="https://www.azorg.be/nl/longziekten" target="_blank"><div class="cond-bar" style="background:var(--red)"></div><h3>🫧 Interstitiële longziekten</h3><p>Littekenvorming in het longweefsel (longfibrose) met progressief verlies van longcapaciteit. Vroege diagnose via HRCT is essentieel.</p><span class="cond-more">Meer info →</span></a>
+    <a class="cond" href="https://www.azorg.be/nl/longziekten" target="_blank"><div class="cond-bar" style="background:var(--teal)"></div><h3>🌿 Pleurale aandoeningen</h3><p>Vochtophoping of ontsteking in de pleuraholte. Diagnose via echografie en punctie, behandeling afhankelijk van de oorzaak.</p><span class="cond-more">Meer info →</span></a>
+    <a class="cond" href="https://www.azorg.be/nl/longziekten" target="_blank"><div class="cond-bar" style="background:var(--green)"></div><h3>🦠 Griep &amp; infecties</h3><p>Virale en bacteriële infecties van de luchtwegen inclusief influenza, tuberculose en mycobacteriële infecties. Gerichte behandeling en preventie.</p><span class="cond-more">Meer info →</span></a>
+  </div>
+</section>
+
+<!-- ONDERZOEKEN -->
+<section class="sec" id="onderzoeken">
+  <div class="lbl">Diagnostiek &amp; ingrepen</div>
+  <h2 class="st">Longonderzoeken en -ingrepen</h2>
+  <p class="sd">De dienst beschikt over moderne diagnostische en interventionele technieken. Meer info op <a href="https://www.azorg.be/nl/longziekten" style="color:var(--red);font-weight:600" target="_blank">azorg.be/longziekten</a>.</p>
+  <div class="proc-grid rev">
+    <a class="proc" href="https://www.azorg.be/nl/longziekten" target="_blank"><div class="proc-ico">🌡️</div><div><h3>Allergie-huidtest</h3><p>Priktest voor identificatie van specifieke allergenen die uw klachten veroorzaken.</p></div></a>
+    <a class="proc" href="https://www.azorg.be/nl/bronchoscopie" target="_blank"><div class="proc-ico">🔭</div><div><h3>Bronchoscopie</h3><p>Inwendige kijkoperatie van de luchtwegen via een flexibele endoscoop. Geschikt voor biopsie en behandeling.</p></div></a>
+    <a class="proc" href="https://www.azorg.be/nl/longziekten" target="_blank"><div class="proc-ico">🩻</div><div><h3>CT-scan van de longen</h3><p>High-resolution beeldvorming voor longkankerscreening, embolie, fibrose en andere aandoeningen.</p></div></a>
+    <a class="proc" href="https://www.azorg.be/nl/echo-endoscopie-ebus" target="_blank"><div class="proc-ico">🔬</div><div><h3>Echo-endoscopie (EBUS)</h3><p>Endoscopische echografie via de luchtpijp voor minimaal invasieve lymfeklierbiopten.</p></div></a>
+    <a class="proc" href="https://www.azorg.be/nl/longziekten" target="_blank"><div class="proc-ico">💊</div><div><h3>Histamine-drempelbepaling</h3><p>Provocatietest om de prikkelbaarheid van de luchtwegen te meten bij astmavermoeden.</p></div></a>
+    <a class="proc" href="https://www.azorg.be/nl/longfunctiemeting" target="_blank"><div class="proc-ico">📊</div><div><h3>Longfunctiemeting</h3><p>Spirometrie, bodyplethysmografie en diffusiemeting voor objectieve evaluatie van de longcapaciteit.</p></div></a>
+    <a class="proc" href="https://www.azorg.be/nl/longziekten" target="_blank"><div class="proc-ico">🫁</div><div><h3>V/Q-scan (longperfusie)</h3><p>Nucleair-geneeskundig onderzoek voor diagnose van longembolie en beoordeling van ventilatie.</p></div></a>
+    <a class="proc" href="https://www.azorg.be/nl/longziekten" target="_blank"><div class="proc-ico">💉</div><div><h3>Pleurapunctie</h3><p>Diagnostisch en therapeutisch verwijderen van vocht uit de pleuraholte via echogeleide punctie.</p></div></a>
+    <a class="proc" href="https://www.azorg.be/nl/longziekten" target="_blank"><div class="proc-ico">😴</div><div><h3>Polysomnografie</h3><p>Volledige slaapstudie met registratie van ademhaling, zuurstof en slaapfasen voor diagnose van slaapapneu.</p></div></a>
+    <a class="proc" href="https://www.azorg.be/nl/starre-bronchoscopie" target="_blank"><div class="proc-ico">🔵</div><div><h3>Starre bronchoscopie</h3><p>Interventionele procedure voor verwijdering van vreemd lichaam, stenting of behandeling van obstruerende tumoren.</p></div></a>
+    <a class="proc" href="https://www.azorg.be/nl/thoracoscopie" target="_blank"><div class="proc-ico">🩺</div><div><h3>Thoracoscopie</h3><p>Minimaal invasieve inspectie van de pleuraholte via kleine incisies voor diagnose van pleurale aandoeningen.</p></div></a>
+    <a class="proc" href="https://www.azorg.be/nl/endoscopische-sonografie-eus" target="_blank"><div class="proc-ico">🏃</div><div><h3>Inspanningsonderzoek (CPET)</h3><p>Cardiopulmonaire inspanningstest op fiets voor evaluatie van dyspneu bij inspanning en sportgerelateerde klachten.</p></div></a>
+  </div>
+</section>
+
+<!-- KLINIEKEN — volledig CMS-data -->
+<section class="sec sec-gray" id="klinieken">
+  <div class="lbl">Gespecialiseerde klinieken</div>
+  <h2 class="st">Expertklinieken binnen Pneumologie</h2>
+  <p class="sd">Naast de algemene consultaties biedt de afdeling gespecialiseerde klinieken voor een gerichte multidisciplinaire aanpak.</p>
+  <div class="klin-grid rev">
+
+    <!-- Slaapkliniek -->
+    <div class="klin">
+      <div class="klin-top" style="background:#7B4FA6"></div>
+      <div class="klin-body">
+        <span class="ki">😴</span>
+        <h3>Slaapkliniek</h3>
+        <p>Multidisciplinair slaaplaboratorium (polysomnografie, ambulante slaapregistratie) voor diagnose van slaapapneu en andere slaapstoornissen. Behandeling via CPAP, mandibulaire repositie-apparaat (MRA), hypoglossal nerve stimulation (HNS) en cognitieve gedragstherapie via psycholoog. Specialisten: Dr. V. Adam &amp; Dr. H. Nguyen.</p>
+      </div>
+      <a class="klin-ft" href="https://www.azorg.be/nl/slaaplabo" target="_blank" style="color:#7B4FA6">Meer over slaapkliniek <span>azorg.be/slaaplabo</span></a>
+    </div>
+
+    <!-- Rookstopkliniek -->
+    <div class="klin">
+      <div class="klin-top" style="background:#E8A000"></div>
+      <div class="klin-body">
+        <span class="ki">🚭</span>
+        <h3>Rookstopkliniek</h3>
+        <p>Multidisciplinaire rookstopbegeleiding door erkende tabakologen in nauwe samenwerking met longarts en/of cardioloog. Keuze tussen individuele begeleiding of begeleiding in groep met lotgenoten. Traject loopt over ±8 sessies. Contact: <a href="mailto:rookstopkliniek@azorg.be" style="color:#E8A000">rookstopkliniek@azorg.be</a></p>
+      </div>
+      <a class="klin-ft" href="https://www.azorg.be/nl/rookstopkliniek" target="_blank" style="color:#E8A000">Meer over rookstop <span>azorg.be/rookstopkliniek</span></a>
+    </div>
+
+    <!-- Sportkliniek & Duikgeneeskunde -->
+    <div class="klin">
+      <div class="klin-top" style="background:#6AAF2E"></div>
+      <div class="klin-body">
+        <span class="ki">🏃</span>
+        <h3>Sportkliniek &amp; Duikgeneeskunde</h3>
+        <p>Sport- en inspanningsonderzoeken, diagnostiek van sportgerelateerde longklachten en VO₂max-bepaling. Ook niet-sporters met conditionele problemen zijn welkom. Duikmedische keuringen conform internationale standaarden (lid hyperbaar centrum ACHOBEL). Begeleidt o.a. Okapi-Aalstar. Specialist: Dr. H. Nguyen.</p>
+      </div>
+      <a class="klin-ft" href="https://www.azorg.be/nl/longziekten" target="_blank" style="color:#6AAF2E">Afspraak via secretariaat <span>053 72 42 89</span></a>
+    </div>
+
+    <!-- Longrevalidatie -->
+    <div class="klin">
+      <div class="klin-top" style="background:#2D9B8A"></div>
+      <div class="klin-body">
+        <span class="ki">🫁</span>
+        <h3>Longrevalidatie</h3>
+        <p>Multidisciplinair revalidatieprogramma voor patiënten met COPD, astma, interstitiële longziekten, longkanker of post-COVID. Fysieke training, ademhalingstechnieken en educatie door kinesisten, longverpleegkundigen en psycholoog. Specialist longrevalidatie: Dr. An Pletinckx.</p>
+      </div>
+      <a class="klin-ft" href="#contact" style="color:#2D9B8A">Afspraak via secretariaat <span>Verwijzing via huisarts</span></a>
+    </div>
+
+    <!-- Longkankerkliniek MOC -->
+    <div class="klin">
+      <div class="klin-top" style="background:#C8102E"></div>
+      <div class="klin-body">
+        <span class="ki">🔬</span>
+        <h3>Longkankerkliniek (MOC)</h3>
+        <p>Volledig multidisciplinair oncologisch traject: wekelijks MOC-overleg met longartsen, thoraxchirurgen, oncologen, radiotherapeuten, pathologen en radiologen. Diagnostiek via EBUS, EUS, bronchoscopie en CT-geleide puncties. Begeleiding door oncoconsulenten. Specialisten: Dr. A. De Paepe, Dr. R. Van Herreweghe, Dr. B.J. Berendes, Prof. Dr. K. Tournoy.</p>
+      </div>
+      <a class="klin-ft" href="https://www.azorg.be/nl/longziekten" target="_blank" style="color:#C8102E">Meer over longkanker <span>azorg.be/longziekten</span></a>
+    </div>
+
+    <!-- Klinisch wetenschappelijk onderzoek -->
+    <div class="klin">
+      <div class="klin-top" style="background:#7A0A1C"></div>
+      <div class="klin-body">
+        <span class="ki">🧬</span>
+        <h3>Klinisch wetenschappelijk onderzoek</h3>
+        <p>Actieve deelname aan nationale en internationale studies voor astma, COPD, longkanker, slaapapneu, longembolie en interstitiële longziekten. Patiënten kunnen deelnemen aan studies voor nieuwe behandelingen. De dienst is tevens opleidingsplaats voor longartsen-in-opleiding, verbonden aan UGent.</p>
+      </div>
+      <a class="klin-ft" href="#contact" style="color:#7A0A1C">Meer info via secretariaat <span>053 72 42 89</span></a>
+    </div>
+
+  </div>
+</section>
+
+<!-- NIEUWS -->
+<section class="sec" id="nieuws">
+  <div class="lbl">Nieuws</div>
+  <h2 class="st">Actueel uit de dienst Pneumologie</h2>
+  <p class="sd">Recente ontwikkelingen, studies en nieuws van AZOrg over longziekten.</p>
+  <div class="news-grid rev">
+    <div class="news-card">
+      <div class="news-img">🚭</div>
+      <div class="news-body">
+        <span class="news-tag">Rookstop</span>
+        <h3>AZORG zet volop in op rookvrije zorg: klaar voor de toekomst</h3>
+        <p>AZOrg werkt aan een volledig rookvrij ziekenhuis en biedt intensieve rookstopbegeleiding voor patiënten, bezoekers en medewerkers via de vernieuwde Rookstopkliniek.</p>
+        <span class="news-date">23 december 2024</span>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="news-img">🏥</div>
+      <div class="news-body">
+        <span class="news-tag">Nieuws</span>
+        <h3>AZOrg Pneumologie breidt klinieken uit met sportkliniek en longrevalidatie</h3>
+        <p>De dienst Pneumologie versterkt haar aanbod met een volwaardige sportkliniek inclusief duikmedische keuringen, en een multidisciplinair longrevalidatieprogramma.</p>
+        <span class="news-date">15 januari 2025</span>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="news-img">🔬</div>
+      <div class="news-body">
+        <span class="news-tag">Wetenschappelijk onderzoek</span>
+        <h3>Nieuwe studie naar biomarkers bij vroege COPD-diagnostiek</h3>
+        <p>De dienst Pneumologie neemt deel aan een multicentrische studie naar vroegdiagnostiek van COPD via uitgeademde lucht en bloedmarkers.</p>
+        <span class="news-date">Lopend onderzoek</span>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:28px">
+    <a href="https://www.azorg.be/nl/nieuws" class="btn btn-ghost" target="_blank">Bekijk al het nieuws op azorg.be →</a>
+  </div>
+</section>
+
+<!-- PATIËNTTOOLS -->
+<section class="sec sec-gray" id="tools">
+  <div class="lbl">✨ Patiëntondersteuning</div>
+  <h2 class="st">Handige tools &amp; informatie</h2>
+  <p class="sd">Digitale hulpmiddelen ter ondersteuning van patiënten met longaandoeningen. Deze tools vervangen geen medisch consult.</p>
+  <div class="tools-grid">
+    <div class="tool-box rev">
+      <div class="new-badge">Nieuw</div>
+      <h3>Klachtennavigator</h3>
+      <p class="tool-desc">Selecteer uw klachten voor een eerste oriëntatie en aanbeveling. Vervangt geen medisch consult.</p>
+      <div class="sym-wrap">
+        <span class="stag" onclick="tog(this)">Kortademigheid</span>
+        <span class="stag" onclick="tog(this)">Aanhoudende hoest</span>
+        <span class="stag" onclick="tog(this)">Piepende ademhaling</span>
+        <span class="stag" onclick="tog(this)">Pijn op de borst</span>
+        <span class="stag" onclick="tog(this)">Snurken / apneu</span>
+        <span class="stag" onclick="tog(this)">Overmatige vermoeidheid</span>
+        <span class="stag" onclick="tog(this)">Koorts &amp; slijmen</span>
+        <span class="stag" onclick="tog(this)">Bloed ophoesten</span>
+        <span class="stag" onclick="tog(this)">Ongewild gewichtsverlies</span>
+        <span class="stag" onclick="tog(this)">Nachtelijk zweten</span>
+      </div>
+      <div class="sym-out" id="sOut"></div>
+    </div>
+    <div class="tool-box rev">
+      <div class="new-badge">Nieuw</div>
+      <h3>Inhalatiegids</h3>
+      <p class="tool-desc">Correcte inhalatietechniek is cruciaal voor de werking van uw medicatie. Selecteer uw type inhalator.</p>
+      <div class="inh-tabs">
+        <button class="itab on" onclick="iT(this,'pMDI')">Dosisaerosol (pMDI)</button>
+        <button class="itab" onclick="iT(this,'turbo')">Turbohaler / Diskus</button>
+        <button class="itab" onclick="iT(this,'respi')">Respimat</button>
+        <button class="itab" onclick="iT(this,'spacer')">Voorzetkamer</button>
+      </div>
+      <ul class="inh-list" id="iL">
+        <li class="inh-li"><div class="inh-n">1</div><div><strong>Schud de inhalator</strong><p>Schud krachtig gedurende 5 seconden voor elk gebruik.</p></div></li>
+        <li class="inh-li"><div class="inh-n">2</div><div><strong>Adem volledig uit</strong><p>Blaas alle lucht rustig uit de longen, weg van de inhalator.</p></div></li>
+        <li class="inh-li"><div class="inh-n">3</div><div><strong>Omsluit het mondstuk</strong><p>Sluit uw lippen stevig rond het mondstuk, houd inhalator rechtop.</p></div></li>
+        <li class="inh-li"><div class="inh-n">4</div><div><strong>Inhaleer en activeer gelijktijdig</strong><p>Adem langzaam en diep in terwijl u de inhalator indrukt.</p></div></li>
+        <li class="inh-li"><div class="inh-n">5</div><div><strong>Houd adem 10 seconden vast</strong><p>Voor optimale depositie van het medicijn in de luchtwegen.</p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-band">
+  <div>
+    <h2>Afspraak maken bij Pneumologie?</h2>
+    <p>Online via mynexuzhealth, telefonisch via het secretariaat van uw campus, of via verwijzing van uw huisarts.</p>
+  </div>
+  <a href="https://mynexuz.be/afspraken/maak-afspraak?ziekenhuisCode=OLVA&medischeDienst=3012" class="btn-white" target="_blank">📅 Online afspraak maken →</a>
+</div>
+
+<!-- VOOR HUISARTSEN -->
+<section class="sec sec-dark" id="huisartsen">
+  <div class="lbl lbl-wh">Voor professionals</div>
+  <h2 class="st st-wh">Informatie voor huisartsen</h2>
+  <p class="sd sd-wh">Snelle verwijzing, digitaal overleg en MOC-vergaderingen voor efficiënte samenwerking met onze longartsen.</p>
+  <div class="ha-grid rev">
+    <a class="ha-card" href="https://www.azorg.be/nl/professional/huisartsen/nexuzhealth-consult" target="_blank">
+      <span class="ha-ico">💻</span>
+      <h3>Nexuzhealth consult</h3>
+      <p>Digitaal overleg met longartsen via het beveiligde nexuzhealth-platform. Voor niet-dringende vragen en overleg over uw patiënten.</p>
+      <span class="ha-link">Naar nexuzhealth consult →</span>
+    </a>
+    <a class="ha-card" href="https://www.azorg.be/nl/professional/huisartsen/moc-vergaderingen" target="_blank">
+      <span class="ha-ico">🫁</span>
+      <h3>MOC Longkanker</h3>
+      <p>Wekelijks multidisciplinair oncologisch overleg voor longkankerpatiënten. Huisartsen kunnen hun patiënten aanmelden voor bespreking.</p>
+      <span class="ha-link">MOC-aanmelding →</span>
+    </a>
+    <a class="ha-card" href="https://labo.asz.be/labogids-azorg/" target="_blank">
+      <span class="ha-ico">🔬</span>
+      <h3>Laboratoriumgidsen</h3>
+      <p>Toegang tot de laboratoriumgids Klinische Biologie en Pathologische Anatomie voor aanvragen en interpretatie van uitslagen.</p>
+      <span class="ha-link">Bekijk labogids →</span>
+    </a>
+    <a class="ha-card" href="https://www.azorg.be/nl/professional/huisartsen/preoperatieve-onderzoeken" target="_blank">
+      <span class="ha-ico">📋</span>
+      <h3>Preoperatieve onderzoeken</h3>
+      <p>Richtlijnen en aanvraagformulieren voor preoperatieve longfunctionele evaluatie vóór ingrepen bij uw patiënten.</p>
+      <span class="ha-link">Meer info →</span>
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT / AFSPRAAK -->
+<section class="sec" id="contact">
+  <div class="lbl">Contact &amp; afspraak</div>
+  <h2 class="st">Afspraak maken bij Pneumologie</h2>
+  <div class="praktisch-grid">
+    <div class="praktisch-left">
+      <h3>Praktische informatie</h3>
+      <div class="prow"><div class="pico">🖥️</div><div class="prow-txt"><strong>Online afspraak</strong><p>Via <a href="https://mynexuz.be" target="_blank">mynexuz.be</a> — afspraken maken kan 24/7 online via mynexuzhealth</p></div></div>
+      <div class="prow"><div class="pico">📞</div><div class="prow-txt"><strong>Aalst Moorselbaan</strong><p><a href="tel:053724289">053 72 42 89</a> — <a href="mailto:pneumologie.aalst@azorg.be">pneumologie.aalst@azorg.be</a></p></div></div>
+      <div class="prow"><div class="pico">📞</div><div class="prow-txt"><strong>Aalst Merestraat</strong><p><a href="tel:053766710">053 76 67 10</a> — <a href="mailto:pneumologie.merestraat@azorg.be">pneumologie.merestraat@azorg.be</a></p></div></div>
+      <div class="prow"><div class="pico">📞</div><div class="prow-txt"><strong>Asse</strong><p><a href="tel:023006336">02 300 63 36</a> — <a href="mailto:pneumologie.asse@azorg.be">pneumologie.asse@azorg.be</a></p></div></div>
+      <div class="prow"><div class="pico">📞</div><div class="prow-txt"><strong>Geraardsbergen</strong><p><a href="tel:054432182">054 43 21 82</a></p></div></div>
+      <div class="prow"><div class="pico">📞</div><div class="prow-txt"><strong>Ninove</strong><p><a href="tel:054312027">054 31 20 27</a> — <a href="mailto:pneumologie.ninove@azorg.be">pneumologie.ninove@azorg.be</a></p></div></div>
+      <div class="prow"><div class="pico">📞</div><div class="prow-txt"><strong>Wetteren</strong><p><a href="tel:093688211">09 368 82 11</a> — <a href="mailto:pneumologie.wetteren@azorg.be">pneumologie.wetteren@azorg.be</a></p></div></div>
+      <div class="prow"><div class="pico">🚑</div><div class="prow-txt"><strong>Rookstopkliniek</strong><p><a href="mailto:rookstopkliniek@azorg.be">rookstopkliniek@azorg.be</a></p></div></div>
+      <div class="prow"><div class="pico">🚑</div><div class="prow-txt"><strong>Dringende gevallen</strong><p>Longarts on-call 24/7 bereikbaar via de spoeddienst van AZOrg</p></div></div>
+    </div>
+    <div class="contact-form-box">
+      <h3>Online aanvraag</h3>
+      <div class="form-2">
+        <div class="fg"><label>Voornaam</label><input type="text" placeholder="Voornaam"></div>
+        <div class="fg"><label>Achternaam</label><input type="text" placeholder="Achternaam"></div>
+      </div>
+      <div class="fg"><label>E-mailadres</label><input type="email" placeholder="uw@email.be"></div>
+      <div class="fg"><label>Telefoonnummer</label><input type="tel" placeholder="+32 ..."></div>
+      <div class="fg">
+        <label>Voorkeurscampus</label>
+        <select>
+          <option value="">Selecteer campus</option>
+          <option>Aalst — Moorselbaan</option>
+          <option>Aalst — Merestraat</option>
+          <option>Asse</option>
+          <option>Geraardsbergen</option>
+          <option>Ninove</option>
+          <option>Wetteren</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label>Reden van consultatie</label>
+        <select>
+          <option value="">Selecteer categorie</option>
+          <option>Kortademigheid / hoest</option>
+          <option>Slaapapneu / snurken</option>
+          <option>Allergie / astma</option>
+          <option>Rookstop</option>
+          <option>Longkanker opvolging</option>
+          <option>Longrevalidatie</option>
+          <option>Sportkliniek / duikkeuring</option>
+          <option>Controle bestaande aandoening</option>
+          <option>Verwijzing huisarts</option>
+          <option>Andere</option>
+        </select>
+      </div>
+      <div class="fg"><label>Bijkomende informatie</label><textarea placeholder="Beschrijf uw klachten of vermeld de naam van uw verwijzende arts..."></textarea></div>
+      <button class="btn-submit" onclick="alert('Bedankt voor uw aanvraag.\n\nOns secretariaat neemt binnen 2 werkdagen contact met u op.\n\nVoor dringende vragen: bel uw dichtstbijzijnde campus.')">Aanvraag versturen →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER KLEURSTROOK -->
+<div class="foot-stripe"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-top">
+    <div class="foot-brand">
+      <a href="https://www.azorg.be" class="foot-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="height:34px;width:auto;display:block"><g><path fill="white" d="M26.3612,26.5322c0,1.5826,1.2,2.7537,2.8344,2.7537c0.7434,0,1.4495-0.2329,1.9367-0.6986v-2.0331H30.752v1.8699c-0.4412,0.3569-0.9691,0.4964-1.5411,0.4964c-1.4105,0-2.456-1.0318-2.456-2.3899s1.0455-2.39,2.456-2.39c0.6585,0,1.2236,0.1783,1.6955,0.6442l0.2479-0.2635c-0.4804-0.4964-1.1694-0.7447-1.9519-0.7447c-1.643,0-2.8429,1.1713-2.8429,2.7539 M21.349,24.1728h1.5497c1.1626,0,1.7821,0.5354,1.7821,1.4738s-0.6195,1.4738-1.7821,1.4738H21.349V24.1728z M22.8987,23.8159h-1.9452v5.431h0.3955v-1.7763h1.5497c0.185,0,0.3565-0.0154,0.5261-0.0392l1.2934,1.8155h0.4497l-1.3561-1.9004c0.8063-0.2398,1.2695-0.8381,1.2695-1.6982c0-1.1491-0.8213-1.8307-2.1844-1.8307 M14.0065,26.5322c0-1.3735,1.0387-2.3899,2.4254-2.3899c1.3867,0,2.417,1.0164,2.417,2.3899s-1.0387,2.39-2.417,2.39C15.0537,28.9221,14.0065,27.9057,14.0065,26.5322z M13.611,26.5322c0,1.5741,1.2,2.7537,2.8192,2.7537c1.6192,0,2.8192-1.1711,2.8192-2.7537c0-1.5826-1.2085-2.7537-2.8192-2.7537C14.8195,23.7785,13.611,24.9581,13.611,26.5322z M12.3669,24.1728L8.6261,28.968v0.2788h4.3688v-0.3571H9.176l3.7341-4.7951v-0.2788H8.6736v0.3569h3.695H12.3669z M3.2083,27.1305l1.032-2.0773l1.032,2.0773H3.2083z M3.5426,23.8192l-2.697,5.4293H2.156l0.5754-1.1593h3.0178l0.5754,1.1593h1.3103l-2.697-5.4293H3.5426z M26.782,4.8644h1.212l-4.4758,9.0074l-2.5579-5.1471c2.1369-0.5916,4.0327-1.8562,5.8216-3.862 M10.4201,10.0047L7.8657,4.8644h1.2119c0.8707,0.974,1.7652,1.7729,2.7004,2.407l0.168-0.34l0.3157,0.2074c1.7143,1.0879,3.5694,1.6063,5.6673,1.6063c0.8673,0,1.6939-0.0901,2.4866-0.272l0.3785-0.0816l0.1663,0.3332l0.0034,0.0085l-0.3751,0.0867c-0.1035,0.0255-0.2088,0.0476-0.314,0.0697c0.1052-0.0221,0.2088-0.0442,0.3123-0.0697c-0.8453,0.2006-1.7279,0.3009-2.658,0.3009c-2.1369,0-4.0294-0.5202-5.7759-1.6063c-0.0204-0.0119-0.039-0.0238-0.0594-0.0357l-0.3174-0.204l-1.3527,2.7231l3.0976,6.2486c0.7926-0.1819,1.6175-0.272,2.4866-0.272c2.0962,0,3.953,0.5202,5.6673,1.6063l0.0033-0.0051v0.0051l1.8417-3.7056l0.2088,0.4199l-1.7364,3.4949l-0.3158-0.2074l-1.0217,2.0568c-0.1001,0.2006-0.2122,0.4029-0.3276,0.5847l-0.0051,0.0085c-0.4854,0.8652-1.402,1.4024-2.3915,1.4024c-0.9895,0-1.901-0.5337-2.3847-1.3905l-0.0051-0.0085c-0.1188-0.1904-0.2325-0.391-0.3344-0.5966l-1.6854-3.3912L13.1477,16.34l-2.938-5.912l-4.8729,9.8046h1.9841l0.112-0.1258c1.7567-1.9684,3.617-3.2008,5.7148-3.7668l1.7227,3.466c0.1069,0.2159,0.2241,0.425,0.3496,0.6255c0.5499,0.974,1.587,1.5774,2.7089,1.5774c1.1219,0,2.1624-0.6085,2.7157-1.5893c0.1222-0.1938,0.2376-0.3995,0.3428-0.6136l1.0015-2.0143c0.896,0.6102,1.7549,1.3803,2.5917,2.3151l0.1119,0.1258h1.9843l-2.9501-5.9375L28.6,4.4904h-1.9843l-0.1119,0.1258c-1.7568,1.9684-3.6171,3.2008-5.7149,3.7668l-1.7228-3.4659c-0.1052-0.2142-0.2223-0.4199-0.3428-0.6136c-0.5533-0.9808-1.5921-1.5893-2.7157-1.5893c-1.1236,0-2.159,0.6051-2.7089,1.5774c-0.1256,0.2006-0.2427,0.4097-0.3496,0.6255l-1.0014,2.016c-0.8962-0.6102-1.755-1.3803-2.5901-2.3152l-0.112-0.1258H7.2614l2.9499,5.9375l0.2088-0.4216V10.0047z"/></g></svg>
+      </a>
+      <span class="foot-tagline">Zorg van A tot Z</span>
+      <p>Pneumologie / Longziekten maakt deel uit van AZOrg, het op twee na grootste ziekenhuis van Vlaanderen met meer dan 5.000 medewerkers verspreid over 6 campussen.</p>
+      <div class="foot-social">
+        <a href="https://www.instagram.com/azorg_ziekenhuizen/" target="_blank" title="Instagram">📷</a>
+        <a href="https://www.facebook.com/AZORGziekenhuizen" target="_blank" title="Facebook">📘</a>
+        <a href="https://www.linkedin.com/company/azorg" target="_blank" title="LinkedIn">💼</a>
+        <a href="https://www.youtube.com/@azorg-yl2wi" target="_blank" title="YouTube">▶️</a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h4>Aandoeningen</h4>
+      <a href="https://www.azorg.be/nl/astma" target="_blank">Astma</a>
+      <a href="https://www.azorg.be/nl/longziekten" target="_blank">Allergie</a>
+      <a href="https://www.azorg.be/nl/copd" target="_blank">COPD</a>
+      <a href="https://www.azorg.be/nl/longziekten" target="_blank">Longkanker</a>
+      <a href="https://www.azorg.be/nl/longziekten" target="_blank">Longembolie</a>
+      <a href="https://www.azorg.be/nl/longziekten" target="_blank">Slaapapneu</a>
+      <a href="https://www.azorg.be/nl/longziekten" target="_blank">Longfibrose</a>
+      <a href="https://www.azorg.be/nl/longziekten" target="_blank">Sarcoïdose</a>
+    </div>
+    <div class="foot-col">
+      <h4>Klinieken &amp; diensten</h4>
+      <a href="https://www.azorg.be/nl/slaaplabo" target="_blank">Slaapkliniek</a>
+      <a href="https://www.azorg.be/nl/rookstopkliniek" target="_blank">Rookstopkliniek</a>
+      <a href="https://www.azorg.be/nl/longziekten" target="_blank">Sportkliniek &amp; Duikgeneeskunde</a>
+      <a href="https://www.azorg.be/nl/longziekten" target="_blank">Longrevalidatie</a>
+      <a href="https://www.azorg.be/nl/longziekten" target="_blank">Longkankerkliniek MOC</a>
+      <a href="https://www.azorg.be/nl/longziekten" target="_blank">Klinisch onderzoek</a>
+    </div>
+    <div class="foot-col">
+      <h4>AZOrg</h4>
+      <a href="https://www.azorg.be" target="_blank">azorg.be</a>
+      <a href="https://www.azorg.be/nl/onze-artsen" target="_blank">Alle artsen</a>
+      <a href="https://www.azorg.be/nl/onze-medische-diensten" target="_blank">Zorgaanbod</a>
+      <a href="https://www.azorg.be/nl/professional/huisartsen" target="_blank">Voor huisartsen</a>
+      <a href="https://www.azorg.be/nl/nieuws" target="_blank">Nieuws</a>
+      <a href="https://www.azorg.be/nl/jobs" target="_blank">Vacatures</a>
+      <a href="https://mynexuz.be" target="_blank">mynexuzhealth</a>
+      <a href="mailto:info@azorg.be">info@azorg.be</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2025 Dienst Pneumologie / Longziekten — AZOrg Ziekenhuis</span>
+    <div>
+      <a href="https://www.azorg.be/nl/patient/privacybeleid" target="_blank">Privacybeleid</a>
+      <a href="https://www.azorg.be/nl/cookiebeleid" target="_blank">Cookiebeleid</a>
+      <a href="https://www.azorg.be/nl/toegankelijkheidsverklaring" target="_blank">Toegankelijkheid</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const obs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis') }), {threshold:.07});
+document.querySelectorAll('.rev').forEach(r => obs.observe(r));
+
+// Symptom checker
+const SD = {
+  'Bloed ophoesten': { t: '<strong>⚠️ Raadpleeg onmiddellijk een arts.</strong> Bloedophoesten vereist urgente medische evaluatie. Bel uw huisarts of ga naar de spoeddienst van AZOrg.', u: true },
+  'Ongewild gewichtsverlies,Aanhoudende hoest': { t: '<strong>Raadpleeg uw arts.</strong> Deze combinatie vraagt verdere evaluatie via CT-scan en bronchoscopie. Maak een afspraak via 053 72 42 89.', u: false },
+  'Kortademigheid,Piepende ademhaling': { t: '<strong>Mogelijke diagnose: Astma of COPD.</strong> Een spirometrie (longfunctiemeting) kan dit bevestigen. Contacteer ons secretariaat op 053 72 42 89.', u: false },
+  'Snurken / apneu,Overmatige vermoeidheid': { t: '<strong>Mogelijke diagnose: Slaapapneu (OSAS).</strong> Onze slaapkliniek kan een polysomnografie plannen. Bel 053 72 42 89.', u: false },
+  'Nachtelijk zweten,Ongewild gewichtsverlies': { t: '<strong>Raadpleeg uw arts.</strong> Deze symptomen vragen een uitgebreide evaluatie. Contacteer uw huisarts of ons secretariaat.', u: false }
+};
+let sel = [];
+function tog(el) {
+  el.classList.toggle('on');
+  const t = el.textContent;
+  sel = el.classList.contains('on') ? [...sel, t] : sel.filter(s => s !== t);
+  const out = document.getElementById('sOut');
+  if (!sel.length) { out.style.display = 'none'; return; }
+  let m = { t: 'Op basis van uw klachten adviseren wij een afspraak bij onze longartsen. <strong>Bel 053 72 42 89</strong> of maak online een afspraak via mynexuzhealth.', u: false };
+  for (const [k, v] of Object.entries(SD)) {
+    const ks = k.split(',');
+    if (sel.includes(k) || ks.every(k2 => sel.includes(k2))) { m = v; break; }
+  }
+  out.innerHTML = m.t;
+  out.className = 'sym-out show' + (m.u ? ' urg' : '');
+}
+
+// Inhalation guide
+const ID = {
+  pMDI: [['Schud de inhalator','Schud krachtig gedurende 5 seconden voor elk gebruik.'],['Adem volledig uit','Blaas alle lucht rustig uit de longen, weg van de inhalator.'],['Omsluit het mondstuk','Sluit uw lippen stevig rond het mondstuk, houd inhalator rechtop.'],['Inhaleer en activeer gelijktijdig','Adem langzaam en diep in terwijl u de inhalator indrukt.'],['Houd adem 10 seconden vast','Voor optimale depositie van het medicijn in de luchtwegen.']],
+  turbo: [['Draai het beschermdopje af','Verwijder het dopje van de turbohaler.'],['Laad de dosis','Draai de ring volledig rechts, dan links tot een klik hoorbaar is.'],['Adem volledig uit','Nooit in de turbohaler uitblazen — weg van het mondstuk.'],['Inhaleer krachtig en snel','Zet mondstuk tussen de lippen en inhaleer zo snel en diep mogelijk.'],['Houd adem 10 seconden vast','Haal daarna rustig adem via de neus.']],
+  respi: [['Draai de dop open','Draai het beschermdopje van het mondstuk af.'],['Draai de basis 180° (klik)','Draai totdat een klik hoorbaar is — één dosis is geladen.'],['Adem volledig uit','Blaas rustig uit, weg van de inhalator.'],['Inhaleer langzaam en diep','Zet mondstuk tussen de lippen, inhaleer langzaam en diep.'],['Houd adem 10 seconden vast','Sluit daarna de dop terug.']],
+  spacer: [['Bevestig de inhalator aan de voorzetkamer','Koppel de inhalator stevig aan het uiteinde van de voorzetkamer.'],['Adem volledig uit','Blaas alle lucht uit de longen.'],['Omsluit het mondstuk van de voorzetkamer','Sluit uw lippen stevig rond het mondstuk.'],['Druk de inhalator eenmaal in','Activeer één dosis in de kamer.'],['Inhaleer langzaam en houd 10 sec vast','Adem langzaam en diep in, houd 10 seconden vast.']]
+};
+function iT(btn, t) {
+  document.querySelectorAll('.itab').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  const list = document.getElementById('iL');
+  list.innerHTML = ID[t].map((s,i) => `<li class="inh-li"><div class="inh-n">${i+1}</div><div><strong>${s[0]}</strong><p>${s[1]}</p></div></li>`).join('');
+}
+</script>
+</body>
+</html>
