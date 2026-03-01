@@ -4,7 +4,7 @@
 
 ### 🔗 Live preview
 
-| 🇧🇪 [Nederlands](https://bartromb.github.io/azorg-pneumologie-website/output/longziekten-azorg.html) | 🇫🇷 [Français](https://bartromb.github.io/azorg-pneumologie-website/output/longziekten-azorg-fr.html) | 🇬🇧 [English](https://bartromb.github.io/azorg-pneumologie-website/output/longziekten-azorg-en.html) | 🇩🇪 [Deutsch](https://bartromb.github.io/azorg-pneumologie-website/output/longziekten-azorg-de.html) |
+| 🇧🇪 [Nederlands](https://htmlpreview.github.io/?https://github.com/bartromb/azorg-pneumologie-website/blob/main/output/longziekten-azorg.html) | 🇫🇷 [Français](https://htmlpreview.github.io/?https://github.com/bartromb/azorg-pneumologie-website/blob/main/output/longziekten-azorg-fr.html) | 🇬🇧 [English](https://htmlpreview.github.io/?https://github.com/bartromb/azorg-pneumologie-website/blob/main/output/longziekten-azorg-en.html) | 🇩🇪 [Deutsch](https://htmlpreview.github.io/?https://github.com/bartromb/azorg-pneumologie-website/blob/main/output/longziekten-azorg-de.html) |
 |:---:|:---:|:---:|:---:|
 
 ## ✨ Features
