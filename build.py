@@ -426,12 +426,28 @@ def _get_translator(lang):
     return _translators[lang]
 
 
+# Plaatsnamen die nooit vertaald mogen worden (pass-through)
+NO_TRANSLATE = {
+    "Aalst", "Asse", "Ninove", "Wetteren", "Geraardsbergen",
+    "Aalst Moorselbaan", "Aalst Merestraat",
+    "Aalst — Moorselbaan", "Aalst — Merestraat",
+    "Campus ASZ", "Campus Asse", "Campus Geraardsbergen",
+    "Campus Ninove", "Campus Wetteren",
+    "Moorselbaan", "Merestraat",
+}
+
+
 def tr(text, lang):
     """Translate NL text to target lang. Cache → deep-translator → NL fallback."""
     if not text or not text.strip():
         return text
 
     stripped = text.strip()
+
+    # Never translate place names
+    if stripped in NO_TRANSLATE:
+        return text
+
     if stripped.startswith(('http', 'mailto:', 'tel:', '+32', '0')) and ' ' not in stripped:
         return text
     if stripped.replace('.', '').replace(',', '').replace('+', '').isdigit():
