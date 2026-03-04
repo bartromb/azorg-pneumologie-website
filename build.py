@@ -87,6 +87,9 @@ UI = {
     "l_aand":"Longaandoeningen","h_aand":"Aandoeningen die wij behandelen",
     "s_aand":'Meer informatie vindt u op <a href="https://www.azorg.be/nl/longziekten" style="color:var(--red);font-weight:600" target="_blank" rel="noopener noreferrer">azorg.be/longziekten</a>.',
     "meer":"Meer info →",
+    "sluiten":"Sluiten ×",
+    "d_klachten":"Klachten","d_diagnose":"Diagnose","d_behandeling":"Behandeling","d_wanneer":"Wanneer naar de arts?",
+    "d_voorwie":"Voor wie?","d_verwachten":"Wat kunt u verwachten?","d_team":"Team","d_praktisch":"Praktisch",
     "l_ond":"Diagnostiek &amp; ingrepen",
     "h_ond":"Longonderzoeken en -ingrepen",
     "s_ond":"De dienst beschikt over moderne diagnostische en interventionele technieken.",
@@ -166,6 +169,9 @@ UI = {
     "h_aand":"Pathologies que nous traitons",
     "s_aand":'Plus d\'informations sur <a href="https://www.azorg.be/nl/longziekten" style="color:var(--red);font-weight:600" target="_blank" rel="noopener noreferrer">azorg.be/longziekten</a>.',
     "meer":"Plus d'info →",
+    "sluiten":"Fermer ×",
+    "d_klachten":"Symptômes","d_diagnose":"Diagnostic","d_behandeling":"Traitement","d_wanneer":"Quand consulter ?",
+    "d_voorwie":"Pour qui ?","d_verwachten":"À quoi s'attendre ?","d_team":"Équipe","d_praktisch":"Pratique",
     "l_ond":"Diagnostic &amp; interventions",
     "h_ond":"Examens et interventions pulmonaires",
     "s_ond":"Le service dispose de techniques diagnostiques et interventionnelles modernes.",
@@ -250,6 +256,9 @@ UI = {
     "l_aand":"Lung conditions","h_aand":"Conditions we treat",
     "s_aand":'More information at <a href="https://www.azorg.be/nl/longziekten" style="color:var(--red);font-weight:600" target="_blank" rel="noopener noreferrer">azorg.be/longziekten</a>.',
     "meer":"More info →",
+    "sluiten":"Close ×",
+    "d_klachten":"Symptoms","d_diagnose":"Diagnosis","d_behandeling":"Treatment","d_wanneer":"When to see a doctor?",
+    "d_voorwie":"Who is it for?","d_verwachten":"What to expect?","d_team":"Team","d_praktisch":"Practical",
     "l_ond":"Diagnostics &amp; procedures",
     "h_ond":"Pulmonary examinations and procedures",
     "s_ond":"The department has modern diagnostic and interventional techniques.",
@@ -332,6 +341,9 @@ UI = {
     "l_aand":"Lungenerkrankungen","h_aand":"Erkrankungen, die wir behandeln",
     "s_aand":'Weitere Informationen auf <a href="https://www.azorg.be/nl/longziekten" style="color:var(--red);font-weight:600" target="_blank" rel="noopener noreferrer">azorg.be/longziekten</a>.',
     "meer":"Mehr Info →",
+    "sluiten":"Schließen ×",
+    "d_klachten":"Beschwerden","d_diagnose":"Diagnose","d_behandeling":"Behandlung","d_wanneer":"Wann zum Arzt?",
+    "d_voorwie":"Für wen?","d_verwachten":"Was erwartet Sie?","d_team":"Team","d_praktisch":"Praktisch",
     "l_ond":"Diagnostik &amp; Eingriffe",
     "h_ond":"Lungenuntersuchungen und -eingriffe",
     "s_ond":"Die Abteilung verfügt über moderne diagnostische und interventionelle Techniken.",
@@ -562,9 +574,9 @@ def build_lang(lang):
         artsen = translate_items(artsen_raw, ["Functie", "Specialisatie"], lang)
         campussen = translate_items(campussen_raw,
                                     ["Naam", "Subtitel", "Openingsuren", "Extra info"], lang)
-        aandoeningen = translate_items(aandoeningen_raw, ["Naam", "Beschrijving"], lang)
+        aandoeningen = translate_items(aandoeningen_raw, ["Naam", "Beschrijving", "Klachten", "Diagnose", "Behandeling", "Wanneer arts"], lang)
         klinieken = translate_items(klinieken_raw,
-                                    ["Naam", "Beschrijving", "Link-tekst"], lang)
+                                    ["Naam", "Beschrijving", "Link-tekst", "Voor wie", "Wat verwachten", "Team", "Praktisch"], lang)
         nieuws = translate_items(nieuws_raw,
                                  ["Titel", "Categorie", "Samenvatting"], lang)
         onderzoeken = translate_items(onderzoeken_raw, ["Naam", "Beschrijving"], lang)
